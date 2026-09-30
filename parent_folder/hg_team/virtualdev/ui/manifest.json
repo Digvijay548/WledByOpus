@@ -1,0 +1,317 @@
+{
+ "generated": "2026-09-29T12:57:57.284Z",
+ "source": "C:\\Users\\DIGVIJ~1\\AppData\\Local\\Temp\\claude\\c--Users-DigvijayPatilLM-Downloads-WLED-main-WLED-main\\1c74d954-61d4-48b6-a5ac-753d266cf64d\\scratchpad\\buildenv\\WLED\\wled00",
+ "webBuildTime": 1790682089,
+ "entries": {
+  "PAGE_cpal": {
+   "file": "PAGE_cpal.gz",
+   "header": "html_cpal.h",
+   "src": "cpal/cpal.htm",
+   "length": 6447,
+   "gzip": true,
+   "rawLength": 16952,
+   "type": "text/html",
+   "sha1": "6be9f5cbbabf52802f43b1230acc3e89677a1f1a"
+  },
+  "PAGE_edit": {
+   "file": "PAGE_edit.gz",
+   "header": "html_edit.h",
+   "src": "edit.htm",
+   "length": 4157,
+   "gzip": true,
+   "rawLength": 10215,
+   "type": "text/html",
+   "sha1": "8b12cfb7465746b684a05252cee801a1571180d3"
+  },
+  "PAGE_usermod": {
+   "file": "PAGE_usermod.gz",
+   "header": "html_other.h",
+   "src": "usermod.htm",
+   "length": 94,
+   "gzip": true,
+   "rawLength": 83,
+   "type": "text/html",
+   "sha1": "b3f58d3f7525b036f6f93933db62876a0eace151"
+  },
+  "PAGE_update": {
+   "file": "PAGE_update.gz",
+   "header": "html_other.h",
+   "src": "update.htm",
+   "length": 2251,
+   "gzip": true,
+   "rawLength": 5428,
+   "type": "text/html",
+   "sha1": "ccedb29ecbc0d820183312bb6ee814bc386a6734"
+  },
+  "PAGE_welcome": {
+   "file": "PAGE_welcome.gz",
+   "header": "html_other.h",
+   "src": "welcome.htm",
+   "length": 1743,
+   "gzip": true,
+   "rawLength": 2586,
+   "type": "text/html",
+   "sha1": "503453e3b3cde308e1ccf40d1a84171339947863"
+  },
+  "PAGE_liveview": {
+   "file": "PAGE_liveview.gz",
+   "header": "html_other.h",
+   "src": "liveview.htm",
+   "length": 947,
+   "gzip": true,
+   "rawLength": 1621,
+   "type": "text/html",
+   "sha1": "02c105a76bd79dabb7ac82bfb9c30af880a1dc21"
+  },
+  "PAGE_liveviewws2D": {
+   "file": "PAGE_liveviewws2D.gz",
+   "header": "html_other.h",
+   "src": "liveviewws2D.htm",
+   "length": 794,
+   "gzip": true,
+   "rawLength": 1279,
+   "type": "text/html",
+   "sha1": "5f7109415b494d298156fdc90984e7305d58ab1b"
+  },
+  "PAGE_404": {
+   "file": "PAGE_404.gz",
+   "header": "html_other.h",
+   "src": "404.htm",
+   "length": 873,
+   "gzip": true,
+   "rawLength": 1267,
+   "type": "text/html",
+   "sha1": "0972565547427c40461bd65eb95766f18608c59a"
+  },
+  "favicon": {
+   "file": "favicon.bin",
+   "header": "html_other.h",
+   "src": "favicon.ico",
+   "length": 156,
+   "gzip": false,
+   "rawLength": null,
+   "type": "image/x-icon",
+   "sha1": "e7dd4960eded669c1d56111e88a7535b008c983b"
+  },
+  "PAGE_msg": {
+   "file": "PAGE_msg.txt",
+   "header": "html_other.h",
+   "src": "msg.htm",
+   "length": 333,
+   "gzip": false,
+   "rawLength": 333,
+   "type": "text/html",
+   "sha1": "a865c9100fe43ee114b24b87ccc9d1e93dd3213a"
+  },
+  "PAGE_dmxmap": {
+   "file": "PAGE_dmxmap.txt",
+   "header": "html_other.h",
+   "src": "dmxmap.htm",
+   "length": 1238,
+   "gzip": false,
+   "rawLength": 1238,
+   "type": "text/html",
+   "sha1": "08c1f8ed5befe63b31c2755223dcf0b72ae5e11b"
+  },
+  "PAGE_pixart": {
+   "file": "PAGE_pixart.gz",
+   "header": "html_pixart.h",
+   "src": "pixart/pixart.htm",
+   "length": 7464,
+   "gzip": true,
+   "rawLength": 22962,
+   "type": "text/html",
+   "sha1": "d4b87f34f42ffb4a4b028e8efba88e462f4e334f"
+  },
+  "PAGE_pixelforge": {
+   "file": "PAGE_pixelforge.gz",
+   "header": "html_pixelforge.h",
+   "src": "pixelforge/pixelforge.htm",
+   "length": 11122,
+   "gzip": true,
+   "rawLength": 32017,
+   "type": "text/html",
+   "sha1": "0106be9794e2a5c9ca7b1bc66096d2e3cd8f1340"
+  },
+  "PAGE_pxmagic": {
+   "file": "PAGE_pxmagic.gz",
+   "header": "html_pxmagic.h",
+   "src": "pxmagic/pxmagic.htm",
+   "length": 8701,
+   "gzip": true,
+   "rawLength": 27499,
+   "type": "text/html",
+   "sha1": "e990d225005c16ee08d980b32c399c8752ae245b"
+  },
+  "PAGE_settingsCss": {
+   "file": "PAGE_settingsCss.gz",
+   "header": "html_settings.h",
+   "src": "style.css",
+   "length": 951,
+   "gzip": true,
+   "rawLength": 2511,
+   "type": "text/css",
+   "sha1": "18a8367923a1c443318d8fd93e733aaf5f05c7d5"
+  },
+  "JS_common": {
+   "file": "JS_common.gz",
+   "header": "html_settings.h",
+   "src": "common.js",
+   "length": 3671,
+   "gzip": true,
+   "rawLength": 7956,
+   "type": "application/javascript",
+   "sha1": "cae92807cb0d13f945bffbe6787f6c65a1da3e2a"
+  },
+  "PAGE_settings": {
+   "file": "PAGE_settings.gz",
+   "header": "html_settings.h",
+   "src": "settings.htm",
+   "length": 730,
+   "gzip": true,
+   "rawLength": 1810,
+   "type": "text/html",
+   "sha1": "95e75de7f70fd7f6dadb7d261fbb8acef053d9b0"
+  },
+  "PAGE_settings_wifi": {
+   "file": "PAGE_settings_wifi.gz",
+   "header": "html_settings.h",
+   "src": "settings_wifi.htm",
+   "length": 3398,
+   "gzip": true,
+   "rawLength": 9529,
+   "type": "text/html",
+   "sha1": "500467c64e47b0c2b3f325f7181ee69e1d2350fa"
+  },
+  "PAGE_settings_leds": {
+   "file": "PAGE_settings_leds.gz",
+   "header": "html_settings.h",
+   "src": "settings_leds.htm",
+   "length": 10343,
+   "gzip": true,
+   "rawLength": 31925,
+   "type": "text/html",
+   "sha1": "e7bd3ac5f76c1d70f069b617acd2d2f5343bb8d3"
+  },
+  "PAGE_settings_dmx": {
+   "file": "PAGE_settings_dmx.gz",
+   "header": "html_settings.h",
+   "src": "settings_dmx.htm",
+   "length": 1363,
+   "gzip": true,
+   "rawLength": 2861,
+   "type": "text/html",
+   "sha1": "b68f29525d8c605d2c4bb98346cae3260a860fab"
+  },
+  "PAGE_settings_ui": {
+   "file": "PAGE_settings_ui.gz",
+   "header": "html_settings.h",
+   "src": "settings_ui.htm",
+   "length": 2939,
+   "gzip": true,
+   "rawLength": 7971,
+   "type": "text/html",
+   "sha1": "9c90f664b294f8363688a6e797a8c8c41598226b"
+  },
+  "PAGE_settings_sync": {
+   "file": "PAGE_settings_sync.gz",
+   "header": "html_settings.h",
+   "src": "settings_sync.htm",
+   "length": 3459,
+   "gzip": true,
+   "rawLength": 10638,
+   "type": "text/html",
+   "sha1": "e2fe882170788c0b36ec509c4bd26508c3ab5866"
+  },
+  "PAGE_settings_time": {
+   "file": "PAGE_settings_time.gz",
+   "header": "html_settings.h",
+   "src": "settings_time.htm",
+   "length": 4800,
+   "gzip": true,
+   "rawLength": 13916,
+   "type": "text/html",
+   "sha1": "56a92bf8341cae6e4a60ad69fb66bfa4e51db2f8"
+  },
+  "PAGE_settings_sec": {
+   "file": "PAGE_settings_sec.gz",
+   "header": "html_settings.h",
+   "src": "settings_sec.htm",
+   "length": 2017,
+   "gzip": true,
+   "rawLength": 4524,
+   "type": "text/html",
+   "sha1": "52e448fca24d01aaf8d6bd6ce6d5000758dc7ee1"
+  },
+  "PAGE_settings_um": {
+   "file": "PAGE_settings_um.gz",
+   "header": "html_settings.h",
+   "src": "settings_um.htm",
+   "length": 3151,
+   "gzip": true,
+   "rawLength": 7668,
+   "type": "text/html",
+   "sha1": "a034d44985754d9bf21931a7c4e9651e07732037"
+  },
+  "PAGE_settings_2D": {
+   "file": "PAGE_settings_2D.gz",
+   "header": "html_settings.h",
+   "src": "settings_2D.htm",
+   "length": 2696,
+   "gzip": true,
+   "rawLength": 7100,
+   "type": "text/html",
+   "sha1": "c5fd71ceca50d99d5d4683c32ba2b8c175fba723"
+  },
+  "PAGE_settings_pin": {
+   "file": "PAGE_settings_pin.gz",
+   "header": "html_settings.h",
+   "src": "settings_pin.htm",
+   "length": 456,
+   "gzip": true,
+   "rawLength": 686,
+   "type": "text/html",
+   "sha1": "c628879003661a4c833a30e236bafd9658ef8e2d"
+  },
+  "PAGE_settings_pininfo": {
+   "file": "PAGE_settings_pininfo.gz",
+   "header": "html_settings.h",
+   "src": "settings_pininfo.htm",
+   "length": 1093,
+   "gzip": true,
+   "rawLength": 1916,
+   "type": "text/html",
+   "sha1": "b7083f4628b9e6b95ca490e4d93540c087943494"
+  },
+  "PAGE_index": {
+   "file": "PAGE_index.gz",
+   "header": "html_ui.h",
+   "src": "index.htm",
+   "length": 39967,
+   "gzip": true,
+   "rawLength": 124496,
+   "type": "text/html",
+   "sha1": "091ee5453fbea39b7f4b3c44e0e54a487552a075"
+  },
+  "JS_iro": {
+   "file": "JS_iro.gz",
+   "header": "js_iro.h",
+   "src": "iro.js",
+   "length": 9960,
+   "gzip": true,
+   "rawLength": 28144,
+   "type": "application/javascript",
+   "sha1": "0fa642b25a5b45dcedc67fdb177a1048f34dc422"
+  },
+  "JS_omggif": {
+   "file": "JS_omggif.gz",
+   "header": "js_omggif.h",
+   "src": "pixelforge/omggif.js",
+   "length": 2560,
+   "gzip": true,
+   "rawLength": 6555,
+   "type": "application/javascript",
+   "sha1": "8f50acf179364df0a90846a3a33e48e31c0968e5"
+  }
+ }
+}

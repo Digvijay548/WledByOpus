@@ -1,0 +1,200 @@
+144|mode_copy_segment|Copy Segment@,Color shift,Lighten,Brighten,ID,Axis(2D),FullStack(last frame);;;12;ix=0,c1=0,c2=0,c3=0
+224|mode_blink|Blink@!,Duty cycle;!,!;!;01
+432|mode_breath|Breathe@!;!,!;!;01
+316|mode_color_wipe|Wipe@!,!;!,!;!
+335|mode_color_wipe_random|Wipe Random@!;;!
+354|mode_random_color|Random Colors@!,Fade time;;!;01
+325|mode_color_sweep|Sweep@!,!;!,!;!
+386|mode_dynamic|Dynamic@!,!,,,,Smooth;;!
+514|mode_rainbow|Colorloop@!,Saturation;;!;01
+530|mode_rainbow_cycle|Rainbow@!,Size;;!
+496|mode_scan|Scan@!,# of dots,,,,,Overlay;!,!,!;!
+505|mode_dual_scan|Scan Dual@!,# of dots,,,,,Overlay;!,!,!;!
+453|mode_fade|Fade@!;!,!;!;01
+575|mode_theater_chase|Theater@!,Gap size;!,!;!
+585|mode_theater_chase_rainbow|Theater Rainbow@!,Gap size;,!;!
+636|mode_running_lights|Running@!,Wave width;!,!;!
+645|mode_saw|Saw@!,Width;!,!;!
+655|mode_twinkle|Twinkle@!,!;!,!;!;;m12=0
+746|mode_dissolve|Dissolve@Repeat speed,Dissolve speed,,,,Random,Complete;!,!;!
+755|mode_dissolve_random|Dissolve Rnd@Repeat speed,Dissolve speed;,!;!
+784|mode_flash_sparkle|Sparkle Dark@!,!,,,,,Overlay;Bg,Fx;!;;m12=0
+804|mode_hyper_sparkle|Sparkle+@!,!,,,,,Overlay;Bg,Fx;!;;m12=0
+242|mode_strobe|Strobe@!;!,!;!;01
+251|mode_strobe_rainbow|Strobe Rainbow@!;,!;!;01
+826|mode_multi_strobe|Strobe Mega@!,!;!,!;!;01
+233|mode_blink_rainbow|Blink Rainbow@Frequency,Blink duration;!,!;!;01
+854|mode_android|Android@!,Width;!,!;!;;m12=1
+963|mode_chase_color|Chase@!,Width;!,!,!;!
+972|mode_chase_random|Chase Random@!,Width;!,,!;!
+981|mode_chase_rainbow|Chase Rainbow@!,Width;!,!;!
+1083|mode_chase_flash|Chase Flash@!;Bg,Fx;!
+1121|mode_chase_flash_random|Chase Flash Rnd@!;!,!;!
+995|mode_chase_rainbow_white|Rainbow Runner@!,Size;Bg;!
+1009|mode_colorful|Colorful@!,Saturation;1,2,3;!
+1052|mode_traffic_light|Traffic Light@!,US style;,!;!
+344|mode_color_sweep_random|Sweep Random@!;;!
+1164|mode_running_color|Chase 2@!,Width;!,!;!
+4918|mode_aurora|Aurora@!,!;1,2,3;!;;sx=24,pal=50
+4962|mode_ColorClouds|Color Clouds@!,!,Clouds,Colors,Distance,,,Cozy;;!;;sx=24,ix=32,c1=48,c2=64,c3=12,pal=0
+1173|mode_running_random|Stream@!,Zone size;;!
+1209|mode_larson_scanner|Scanner@!,Trail,Delay,,,Dual,Bi-delay;!,!,!;!;;m12=0,c1=0
+1330|mode_rain|Rain@!,Spawning rate;!,!;!;12;ix=128,pal=0
+1999|mode_pride_2015|Pride 2015@!;;
+2007|mode_colorwaves|Colorwaves@!,Hue;!;!;;pal=26
+1290|mode_fireworks|Fireworks@,Frequency;!,!;!;12;ix=192,pal=11
+3961|mode_tetrix|Tetrix@!,Width,,,,One color;!,!;!;;sx=0,ix=0,pal=11,m12=1
+1366|mode_fire_flicker|Fire Flicker@!,!;!;!;01
+1420|mode_gradient|Gradient@!,Spread;!,!;!;;ix=16
+1429|mode_loading|Loading@!,Fade;!,!;!;;ix=16
+1470|mode_fairy|Fairy@!,# of flashers;!,!;!
+1437|mode_two_dots|Two Dots@!,Dot size,,,,,Overlay;1,2,Bg;!
+1547|mode_fairytwinkle|Fairytwinkle@!,!;!,!;!;;m12=0
+627|mode_running_dual|Running Dual@!,Wave width;L,!,R;!
+4642|mode_image|Image@!,Blur,;;;12;sx=128,ix=0
+1616|mode_tricolor_chase|Chase 3@!,Size;1,2,3;!
+1697|mode_tricolor_wipe|Tri Wipe@!;1,2,3;!
+1737|mode_tricolor_fade|Tri Fade@!;1,2,3;!
+1906|mode_lightning|Lightning@!,!,,,,,Overlay;!,!;!
+1625|mode_icu|ICU@!,!,,,,,Overlay;!,!;!
+1256|mode_dual_larson_scanner|Scanner Dual@!,Trail,Delay,,,Dual,Bi-delay;!,!,!;!;;m12=0,c1=0
+1815|mode_random_chase|Stream 2@!;;
+1856|mode_oscillate|Oscillate
+2014|mode_juggle|Juggle@!,Trail;;!;;sx=64,ix=128
+2031|mode_palette|Palette@Shift,Size,Rotation,,,Animate Shift,Animate Rotation,Anamorphic;;!;12;ix=112,c1=0,o1=1,o2=0,o3=1
+2216|mode_bpm|Bpm@!;!;!;;sx=64
+2226|mode_fillnoise8|Fill Noise@!;!;!
+2237|mode_noise16_1|Noise 1@!;!;!;;pal=20
+2256|mode_noise16_2|Noise 2@!;!;!;;pal=43
+2272|mode_noise16_3|Noise 3@!;!;!;;pal=35
+2292|mode_noise16_4|Noise 4@!;!;!;;pal=26
+2303|mode_colortwinkle|Colortwinkles@Fade speed,Spawn speed;;!;;m12=0
+2359|mode_lake|Lake@!;Fx;!
+2378|mode_meteor|Meteor@!,Trail,,,,Gradient,,Smooth;;!;1
+2446|mode_railway|Railway@!,Smoothness;1,2;!;;pal=3
+2545|mode_ripple|Ripple@!,Wave #,Blur,,,,Overlay;,!;!;12;c1=0
+2700|mode_twinklefox|Twinklefox@!,Twinkle rate,,,,Cool;!,!;!
+2707|mode_twinklecat|Twinklecat@!,Twinkle rate,,,,Cool,Reverse;!,!;!
+2714|mode_halloween_eyes|Halloween Eyes@Eye off time,Eye on time,,,,,Overlay;!,!;!;12
+2870|mode_static_pattern|Solid Pattern@Fg size,Bg size;Fg,!;!;;pal=0
+2889|mode_tri_static_pattern|Solid Pattern Tri@,Size;1,2,3;;;pal=0
+2940|mode_spots|Spots@Spread,Width,,,,,Overlay;!,!;!
+2948|mode_spots_fade|Spots Fade@Spread,Width,,,,,Overlay;!,!;!
+1265|mode_comet|Lighthouse@!,Fade rate;!,!;!
+2157|mode_fire_2012|Fire 2012@Cooling,Spark rate,,2D Blur,Boost;;!;1;pal=35,sx=64,ix=160,m12=1,c2=128
+3731|mode_exploding_fireworks|Fireworks 1D@Gravity,Firing side;!,!;!;12;pal=11,ix=128
+764|mode_sparkle|Sparkle@!,,,,,,Overlay;!,!;!;;m12=0
+3392|mode_glitter|Glitter@!,!,,,,,Overlay;,,Glitter color;!;;pal=11,m12=0
+3414|mode_solid_glitter|Solid Glitter@,!;Bg,,Glitter color;;;m12=0
+1778|mode_multi_comet|Multi Comet@!,Fade;!,!;!;1
+3052|mode_rolling_balls|Rolling Balls@!,# of balls,,,,Collide,Overlay,Trails;!,!,!;!;1;m12=1
+3613|mode_starburst|Fireworks Starburst@Chance,Fragments,,,,,Overlay;,!;!;;pal=11,m12=0
+4505|mode_dancing_shadows|Dancing Shadows@!,# of shadows;!;!
+3579|mode_candle|Candle@!,!;!,!;!;01;sx=96,ix=224,pal=0
+2967|mode_bouncing_balls|Bouncing Balls@Gravity,# of balls,,,,,Overlay;!,!,!;!;1;m12=1
+3435|mode_popcorn|Popcorn@!,!,,,,,Overlay;!,!,!;!;;m12=1
+3867|mode_drip|Drip@Gravity,# of drips,,,,,Overlay;!,!;!;;m12=1
+3369|mode_sinelon|Sinelon@!,Trail;!,!,!;!
+3375|mode_sinelon_dual|Sinelon Dual@!,Trail;!,!,!;!
+3381|mode_sinelon_rainbow|Sinelon Rainbow@!,Trail;,,!;!
+4040|mode_plasma|Plasma@Phase,!;!;!
+4062|mode_percent|Percent@!,% of fill,,,,One color;!,!;!
+2557|mode_ripple_rainbow|Ripple Rainbow@!,Wave #;;!;12
+4113|mode_heartbeat|Heartbeat@!,!;!,!;!;01;m12=1
+4180|mode_pacifica|Pacifica@!,Angle;;!;;pal=51
+3586|mode_candle_multi|Candle Multi@!,!;!,!;!;;sx=96,ix=224,pal=0
+4259|mode_sunrise|Sunrise@Time [min],Width;;!;;pal=35,sx=60
+4332|mode_phased|Phased@!,!;!,!;!
+4344|mode_twinkleup|Twinkleup@!,Intensity;!,!;!;;m12=0
+4361|mode_noisepal|Noise Pal@!,Scale;;!
+4398|mode_sinewave|Sine@!,Scale;;!
+4338|mode_phased_noise|Phased Noise@!,!;!,!;!
+4418|mode_flow|Flow@!,Zones;;!;;m12=1
+4455|mode_chunchun|Chunchun@!,Gap size;!,!;!
+4625|mode_washing_machine|Washing Machine@!,!;;!
+4659|mode_blends|Blends@Shift speed,Blend speed;;!
+4706|mode_tv_simulator|TV Simulator@!,!;;!;01
+420|mode_dynamic_smooth|Dynamic Smooth@!,!;;!
+3161|mode_pacman|PacMan@Speed,# of PowerDots,Blink distance,Blur,# of Ghosts,Dots,Smear,Compact;;!;1;m12=0,sx=192,ix=64,c1=64,c2=0,c3=12,o1=1,o2=0
+10866|mode_slow_transition|Slow Transition@Time (min),,,,,,Sweep;!;!;1;pal=2,sx=0,ix=0
+7173|mode_pixels|Pixels@Fade rate,# of pixels;!,!;!;1v;m12=0,si=0
+7061|mode_pixelwave|Pixelwave@!,Sensitivity;!,!;!;1v;ix=64,m12=2,si=0
+6924|mode_juggles|Juggles@!,# of balls;!,!;!;01v;m12=0,si=0
+6942|mode_matripix|Matripix@!,Brightness;!,!;!;1v;ix=64,m12=2,si=1
+6906|mode_gravimeter|Gravimeter@Rate of fall,Sensitivity;!,!;!;1v;ix=128,m12=2,si=0
+7094|mode_plasmoid|Plasmoid@Phase,# of pixels;!,!;!;01v;sx=128,ix=128,m12=0,si=0
+7164|mode_puddles|Puddles@Fade rate,Puddle size;!,!;!;1v;m12=0,si=0
+6976|mode_midnoise|Midnoise@Fade rate,Max. length;!,!;!;1v;ix=128,m12=1,si=0
+7032|mode_noisemeter|Noisemeter@Fade rate,Width;!,!;!;1v;ix=128,m12=2,si=0
+7384|mode_freqwave|Freqwave@Speed,Sound effect,Low bin,High bin,Pre-amp;;;01f;m12=2,si=0
+7290|mode_freqmatrix|Freqmatrix@Speed,Sound effect,Low bin,High bin,Sensitivity;;;01f;m12=3,si=0
+7488|mode_waterfall|Waterfall@!,Adjust color,Select bin,Volume (min);!,!;!;01f;c2=0,m12=2,si=0
+7344|mode_freqpixels|Freqpixels@Fade rate,Starting color and # of pixels;!,!,;!;1f;m12=0,si=0
+7007|mode_noisefire|Noisefire@!,!;;;01v;m12=2,si=0
+7159|mode_puddlepeak|Puddlepeak@Fade rate,Puddle size,Select bin,Volume (min);!,!;!;1v;c2=0,m12=0,si=0
+7433|mode_noisemove|Noisemove@Move speed,Fade rate;!,!;!;01f;m12=0,si=0
+5036|mode_perlinmove|Perlin Move@!,# of pixels,Fade rate;!,!;!
+6651|mode_ripplepeak|Ripple Peak@Fade rate,Max # of ripples,Select bin,Volume (min);!,!;!;1v;c2=0,m12=0,si=0
+7259|mode_freqmap|Freqmap@Fade rate,Starting color;!,!;!;1f;m12=0,si=0
+6889|mode_gravcenter|Gravcenter@Rate of fall,Sensitivity;!,!;!;1v;ix=128,m12=2,si=0
+6897|mode_gravcentric|Gravcentric@Rate of fall,Sensitivity;!,!;!;1v;ix=128,m12=3,si=0
+6915|mode_gravfreq|Gravfreq@Rate of fall,Sensitivity;!,!;!;1f;ix=128,m12=0,si=0
+7230|mode_DJLight|DJ Light@Speed;;;01f;m12=2,si=0
+7199|mode_blurz|Blurz@Fade rate,Blur;!,Color mix;!;1f;m12=0,si=0
+5068|mode_FlowStripe|Flow Stripe@Hue speed,Effect speed;;!;pal=11
+5052|mode_wavesins|Wavesins@!,Brightness variation,Starting color,Range of colors,Color variation;!;!
+7454|mode_rocktaves|Rocktaves@;!,!;!;01f;m12=1,si=0
+5089|mode_shimmer|Shimmer@Speed,Interval,Size,Granular,Flow,Zebra,Reverse,Sporadic;Fx,Bg,Cx;!;1;pal=15,sx=220,ix=10,c2=0,c3=0
+6600|mode_2Dplasmarotozoom|Rotozoomer@!,Scale,,,,Alt;;!;2;pal=54
+6086|mode_2Dspaceships|Spaceships@!,Blur,,,,Smear;;!;2
+6127|mode_2Dcrazybees|Crazy Bees@!,Blur,,,,Smear;;!;2;pal=11,ix=0
+6199|mode_2Dghostrider|Ghost Rider@Fade rate,Blur;;!;2
+6286|mode_2Dfloatingblobs|Blobs@!,# blobs,Blur,Trail;!;!;2;c1=8
+6382|mode_2Dscrollingtext|Scrolling Text@!,Y Offset,Trail,Font size,Rotate,Gradient,Custom Font,Reverse;!,!,Gradient;!;2;ix=128,c1=0,rev=0,mi=0,rY=0,mY=0
+6574|mode_2Ddriftrose|Drift Rose@Fade,Blur,,,,Smear;;!;2;pal=11
+7754|mode_2Ddistortionwaves|Distortion Waves@!,Scale,,,,Fill,Zoom,Alt;;!;2;pal=0
+7542|mode_2DGEQ|GEQ@Fade speed,Ripple decay,# of bands,,Bin,Color bars;!,,Peaks;!;2f;c1=255,c2=64,pal=11,si=0,c3=0
+5834|mode_2Dnoise|Noise2D@!,Scale;;!;2
+5335|mode_2Dfirenoise|Firenoise@X scale,Y scale,,,,Palette;;!;2;pal=66
+5971|mode_2Dsquaredswirl|Squared Swirl@,Fade,,,Blur;;!;2
+5243|mode_2Ddna|DNA@Scroll speed,Blur,,,,Smear;;!;2;ix=0
+5708|mode_2Dmatrix|Matrix@!,Spawning rate,Trail,,,Custom color;Spawn,Trail;;2
+5777|mode_2Dmetaballs|Metaballs@!;;!;2
+7601|mode_2DFunkyPlank|Funky Plank@Scroll speed,,# of bands;;;2f;si=0
+5923|mode_2DPulser|Pulser@!,Blur;;!;2
+5307|mode_2DDrift|Drift@Rotation speed,Blur,,,,Twin,Smear;;!;2;ix=0
+6762|mode_2DWaverly|Waverly@Amplification,Sensitivity,,,,,Blur;;!;2v;ix=64,si=0
+6001|mode_2DSunradiation|Sun Radiation@Variance,Brightness;;;2
+5193|mode_2DColoredBursts|Colored Bursts@Speed,# of lines,,,Blur,Gradient,Smear,Dots;;!;2;c3=16
+5576|mode_2DJulia|Julia@,Max iterations per pixel,X center,Y center,Area size, Blur;!;!;2;ix=24,c1=128,c2=128,c3=16
+5390|mode_2Dgameoflife|Game Of Life@!,,Blur,,,,,Mutation;!,!;!;2;pal=11,sx=128
+6049|mode_2Dtartan|Tartan@X scale,Y scale,,,Sharpness;;!;2
+5891|mode_2DPolarLights|Polar Lights@!,Scale,,,,Flip Palette;;!;2;pal=71
+6725|mode_2DSwirl|Swirl@!,Sensitivity,Blur;,Bg Swirl;!;2v;ix=64,si=0
+5681|mode_2DLissajous|Lissajous@X frequency,Fade rate,Blur,,Speed,Smear;!;!;2;c1=0
+5366|mode_2DFrizzles|Frizzles@X frequency,Y frequency,Blur,,,Smear;;!;2
+5855|mode_2DPlasmaball|Plasma Ball@Speed,,Fade,Blur;;!;2
+5546|mode_2DHiphotic|Hiphotic@X scale,Y scale,,,Speed;!;!;2
+5943|mode_2DSindots|Sindots@!,Dot distance,Fade rate,Blur,,Smear;;!;2;
+5261|mode_2DDNASpiral|DNA Spiral@Scroll speed,Y frequency,Blur,,,Smear;;!;2;c1=0
+5161|mode_2DBlackHole|Black Hole@Fade rate,Outer Y freq.,Outer X freq.,Inner X freq.,Inner Y freq.,Solid,,Blur;!;!;2;pal=11
+7886|mode_2Dsoap|Soap@!,Smoothness,Density;;!;2;pal=11
+7937|mode_2Doctopus|Octopus@!,,Offset X,Offset Y,Legs,fasttan;;!;2;
+7994|mode_2Dwavingcell|Waving Cell@!,Blur,Amplitude 1,Amplitude 2,Amplitude 3,,Flow;;!;2;ix=0
+7687|mode_2DAkemi|Akemi@Color speed,Dance;Head palette,Arms & Legs,Eyes & Mouth;Face palette;2f;si=0
+8281|mode_particlevolcano|PS Volcano@Speed,Intensity,Move,Bounce,Spread,AgeColor,Walls,Collide;;!;2;pal=35,sx=100,ix=190,c1=0,c2=160,c3=6,o1=1
+8352|mode_particlefire|PS Fire@Speed,Intensity,Flame Height,Wind,Spread,Smooth,Cylinder,Turbulence;;!;2;pal=35,sx=110,c1=110,c2=50,c3=31,o1=1
+8138|mode_particlefireworks|PS Fireworks@Launches,Explosion Size,Fuse,Blur,Gravity,Cylinder,Ground,Fast;;!;2;pal=11,ix=50,c1=40,c2=0,c3=12
+8024|mode_particlevortex|PS Vortex@Rotation Speed,Particle Speed,Arms,Flip,Nozzle,Smear,Direction,Random Flip;;!;2;pal=27,c1=200,c2=0,c3=0
+8681|mode_particleperlin|PS Fuzzy Noise@Speed,Particles,Bounce,Friction,Scale,Cylinder,Smear,Collide;;!;2;pal=64,sx=50,ix=200,c1=130,c2=30,c3=5
+8456|mode_particlepit|PS Ballpit@Speed,Intensity,Size,Hardness,Saturation,Cylinder,Walls,Ground;;!;2;pal=11,sx=100,ix=220,c1=70,c2=180,c3=31,o3=1
+8595|mode_particlebox|PS Box@!,Particles,Tilt,Hardness,Size,Random,Washing Machine,Sloshing;;!;2;pal=53,ix=50,c3=1,o1=1
+8850|mode_particleattractor|PS Attractor@Mass,Particles,Size,Collide,Friction,AgeColor,Move,Swallow;;!;2;pal=9,sx=100,ix=82,c1=1,c2=0
+8742|mode_particleimpact|PS Impact@Launches,!,Force,Hardness,Blur,Cylinder,Walls,Collide;;!;2;pal=0,sx=32,ix=85,c1=70,c2=130,c3=0,o3=1
+8524|mode_particlewaterfall|PS Waterfall@Speed,Intensity,Variation,Collide,Position,Cylinder,Walls,Ground;;!;2;pal=9,sx=15,ix=200,c1=32,c2=160,o3=1
+8941|mode_particlespray|PS Spray@Speed,!,Left/Right,Up/Down,Angle,Gravity,Cylinder/Square,Collide;;!;2v;pal=0,sx=150,ix=150,c1=220,c2=30,c3=21
+9014|mode_particleGEQ|PS GEQ 2D@Speed,Intensity,Diverge,Bounce,Gravity,Cylinder,Walls,Floor;;!;2f;pal=0,sx=155,ix=200,c1=0
+9088|mode_particlecenterGEQ|PS GEQ Nova@Speed,Intensity,Rotation Speed,Color Change,Nozzle,,Direction;;!;2f;pal=13,ix=180,c1=0,c2=0,c3=8
+9156|mode_particleghostrider|PS Ghost Rider@Speed,Spiral,Blur,Color Cycle,Spread,AgeColor,Walls;;!;2;pal=1,sx=70,ix=0,c1=220,c2=30,c3=21,o1=1
+9236|mode_particleblobs|PS Blobs@Speed,Blobs,Size,Life,Blur,Wobble,Collide,Pulsate;;!;2v;sx=30,ix=64,c1=200,c2=130,c3=0,o3=1
+9309|mode_particlegalaxy|PS Galaxy@!,!,Size,,Color,,Starfield,Trace;;!;2;pal=59,sx=80,c1=1,c3=4

@@ -1,0 +1,649 @@
+{
+ "src": "usermods/home_gadgets/home_gadgets.cpp HG_BUILTIN_MOODS",
+ "moods": [
+  {
+   "id": 0,
+   "name": "Pub Vibes",
+   "fx": "Gravcenter",
+   "fxId": 156,
+   "pal": "Party",
+   "palId": 6,
+   "sx": 160,
+   "ix": 150,
+   "bri": 255,
+   "col": [
+    16734720,
+    16639,
+    0
+   ],
+   "preview": [
+    16711840,
+    16738816,
+    2113791
+   ],
+   "sound": true,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 1,
+   "name": "Calm",
+   "fx": "Colorwaves",
+   "fxId": 67,
+   "pal": "Pastel",
+   "palId": 20,
+   "sx": 40,
+   "ix": 100,
+   "bri": 102,
+   "col": [
+    16756848,
+    6324479,
+    0
+   ],
+   "preview": [
+    11069135,
+    14472191,
+    16765878
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 2,
+   "name": "Midnight",
+   "fx": "Twinklefox",
+   "fxId": 80,
+   "pal": "April Night",
+   "palId": 46,
+   "sx": 60,
+   "ix": 80,
+   "bri": 38,
+   "col": [
+    2109600,
+    16,
+    0
+   ],
+   "preview": [
+    725824,
+    3808369,
+    6970061
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 3,
+   "name": "Disco",
+   "fx": "Freqwave",
+   "fxId": 137,
+   "pal": "Rainbow",
+   "palId": 11,
+   "sx": 200,
+   "ix": 128,
+   "bri": 255,
+   "col": [
+    16711776,
+    65408,
+    0
+   ],
+   "preview": [
+    16711680,
+    65376,
+    4210943
+   ],
+   "sound": true,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 4,
+   "name": "Bass Drop",
+   "fx": "Gravimeter",
+   "fxId": 132,
+   "pal": "Lava",
+   "palId": 8,
+   "sx": 170,
+   "ix": 160,
+   "bri": 230,
+   "col": [
+    16719872,
+    16752640,
+    0
+   ],
+   "preview": [
+    6291456,
+    16723968,
+    16756736
+   ],
+   "sound": true,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 5,
+   "name": "Chill Lounge",
+   "fx": "Plasmoid",
+   "fxId": 133,
+   "pal": "Ocean",
+   "palId": 9,
+   "sx": 60,
+   "ix": 128,
+   "bri": 128,
+   "col": [
+    41215,
+    8256,
+    0
+   ],
+   "preview": [
+    15196,
+    30646,
+    4770532
+   ],
+   "sound": true,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 6,
+   "name": "Cozy Fire",
+   "fx": "Fire 2012",
+   "fxId": 66,
+   "pal": "Fire",
+   "palId": 35,
+   "sx": 64,
+   "ix": 160,
+   "bri": 153,
+   "col": [
+    16736256,
+    0,
+    0
+   ],
+   "preview": [
+    4194304,
+    16729344,
+    16760896
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 7,
+   "name": "Candlelight",
+   "fx": "Candle",
+   "fxId": 88,
+   "pal": "Default",
+   "palId": 0,
+   "sx": 96,
+   "ix": 224,
+   "bri": 89,
+   "col": [
+    16744480,
+    4198400,
+    0
+   ],
+   "preview": [
+    8400896,
+    16747546,
+    16762992
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 8,
+   "name": "Ocean",
+   "fx": "Pacifica",
+   "fxId": 101,
+   "pal": "Atlantica",
+   "palId": 51,
+   "sx": 100,
+   "ix": 128,
+   "bri": 128,
+   "col": [
+    24831,
+    65472,
+    0
+   ],
+   "preview": [
+    7999,
+    29913,
+    8379391
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 9,
+   "name": "Northern Lights",
+   "fx": "Aurora",
+   "fxId": 38,
+   "pal": "Aurora",
+   "palId": 50,
+   "sx": 24,
+   "ix": 128,
+   "bri": 115,
+   "col": [
+    65408,
+    8388863,
+    33023
+   ],
+   "preview": [
+    65436,
+    41136,
+    6947071
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 10,
+   "name": "Reading",
+   "fx": "Solid",
+   "fxId": 0,
+   "pal": "Default",
+   "palId": 0,
+   "sx": 128,
+   "ix": 128,
+   "bri": 204,
+   "col": [
+    16756832,
+    0,
+    0
+   ],
+   "preview": [
+    16769200,
+    16765072,
+    16760944
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 11,
+   "name": "Wake Up",
+   "fx": "Sunrise",
+   "fxId": 104,
+   "pal": "Fire",
+   "palId": 35,
+   "sx": 30,
+   "ix": 128,
+   "bri": 255,
+   "col": [
+    16744448,
+    0,
+    0
+   ],
+   "preview": [
+    4198400,
+    16740352,
+    16769152
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 12,
+   "name": "Away",
+   "fx": "TV Simulator",
+   "fxId": 116,
+   "pal": "Default",
+   "palId": 0,
+   "sx": 128,
+   "ix": 128,
+   "bri": 153,
+   "col": [
+    16777215,
+    0,
+    0
+   ],
+   "preview": [
+    2117887,
+    14737663,
+    8425648
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 13,
+   "name": "Romantic",
+   "fx": "Breathe",
+   "fxId": 2,
+   "pal": "Magred",
+   "palId": 41,
+   "sx": 40,
+   "ix": 128,
+   "bri": 77,
+   "col": [
+    16715856,
+    4194320,
+    0
+   ],
+   "preview": [
+    8388640,
+    16716880,
+    16740496
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 14,
+   "name": "Rainy Day",
+   "fx": "Rain",
+   "fxId": 43,
+   "pal": "Ocean",
+   "palId": 9,
+   "sx": 90,
+   "ix": 128,
+   "bri": 102,
+   "col": [
+    6324479,
+    16,
+    0
+   ],
+   "preview": [
+    2109504,
+    4219008,
+    9486560
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 15,
+   "name": "Festival Sparkle",
+   "fx": "Twinkleup",
+   "fxId": 106,
+   "pal": "Party",
+   "palId": 6,
+   "sx": 128,
+   "ix": 160,
+   "bri": 179,
+   "col": [
+    16760832,
+    16711808,
+    0
+   ],
+   "preview": [
+    16766720,
+    16716947,
+    49151
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 16,
+   "name": "Gaming",
+   "fx": "Rocktaves",
+   "fxId": 185,
+   "pal": "Orange & Teal",
+   "palId": 44,
+   "sx": 128,
+   "ix": 128,
+   "bri": 230,
+   "col": [
+    16736256,
+    49344,
+    0
+   ],
+   "preview": [
+    16742912,
+    49344,
+    16464
+   ],
+   "sound": true,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 17,
+   "name": "Spring Bloom",
+   "fx": "Flow",
+   "fxId": 110,
+   "pal": "Sakura",
+   "palId": 49,
+   "sx": 60,
+   "ix": 128,
+   "bri": 128,
+   "col": [
+    16748720,
+    9502608,
+    0
+   ],
+   "preview": [
+    16758725,
+    16768485,
+    10410398
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 18,
+   "name": "Beat Ripple",
+   "fx": "Ripple Peak",
+   "fxId": 148,
+   "pal": "Candy",
+   "palId": 57,
+   "sx": 128,
+   "ix": 208,
+   "bri": 230,
+   "col": [
+    16728224,
+    0,
+    0
+   ],
+   "preview": [
+    15987223,
+    15902758,
+    7280023
+   ],
+   "sound": true,
+   "c1": 128,
+   "c2": 0,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 19,
+   "name": "Popcorn Party",
+   "fx": "Popcorn",
+   "fxId": 95,
+   "pal": "Rainbow",
+   "palId": 11,
+   "sx": 150,
+   "ix": 180,
+   "bri": 230,
+   "col": [
+    16777215,
+    0,
+    0
+   ],
+   "preview": [
+    16722432,
+    16769024,
+    2130175
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 20,
+   "name": "Lighthouse",
+   "fx": "Lighthouse",
+   "fxId": 41,
+   "pal": "Icefire",
+   "palId": 36,
+   "sx": 64,
+   "ix": 160,
+   "bri": 179,
+   "col": [
+    14741759,
+    0,
+    0
+   ],
+   "preview": [
+    13173,
+    26367,
+    11003647
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 21,
+   "name": "Night Path",
+   "fx": "Solid",
+   "fxId": 0,
+   "pal": "Default",
+   "palId": 0,
+   "sx": 128,
+   "ix": 128,
+   "bri": 20,
+   "col": [
+    16747550,
+    0,
+    0
+   ],
+   "preview": [
+    3807748,
+    10507791,
+    16747550
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  },
+  {
+   "id": 22,
+   "name": "Focus",
+   "fx": "Solid",
+   "fxId": 0,
+   "pal": "Default",
+   "palId": 0,
+   "sx": 128,
+   "ix": 128,
+   "bri": 230,
+   "col": [
+    15266047,
+    0,
+    0
+   ],
+   "preview": [
+    13162751,
+    15266047,
+    16777215
+   ],
+   "sound": false,
+   "c1": 128,
+   "c2": 128,
+   "c3": 16,
+   "o1": false,
+   "o2": false,
+   "o3": false
+  }
+ ]
+}

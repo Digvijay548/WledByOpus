@@ -1,0 +1,117 @@
+--- rc6.htm	2026-09-29 19:10:35.977518100 +0530
++++ home.htm	2026-09-29 19:11:05.922274900 +0530
+@@ -126,6 +126,7 @@
+ .fxl button{justify-content:flex-start;min-height:38px;background:transparent;border-radius:9px;padding:6px 10px;text-align:left}
+ .fxl button.sel{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+ .fxl button{position:relative;overflow:hidden}.fxb{position:absolute;left:0;bottom:0;width:100%;height:6px}
++.fxl button{padding-bottom:10px}.fxl .fxb{height:8px}.mood canvas.pv{display:block;width:100%;height:36px}
+ .sl{display:grid;grid-template-columns:minmax(0,7.5em) minmax(0,1fr) 3ch;gap:8px;align-items:center;font-size:13px}
+ .cols{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+ .cols label{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;color:var(--muted)}
+@@ -333,6 +334,37 @@
+ 	const s=fxc.fxd[i]||"", p=s?s.split(";"):[], sp=x=>(p[x]?p[x].split(","):[]), fl=i?(p[3]||"1"):"";
+ 	return {def:s.length>0,sl:sp(0),co:sp(1),pa:sp(2),snd:/[vf]/.test(fl),only2D:fl.includes("2")&&!fl.includes("1")};
+ }
++// animated previews: 6c's effect engine FXS from /home/fx.js, then the /json/palx pages and the built-in mood looks /home/bm, one
++// request at a time. Loaded only if the firmware says where the script comes from (X22, fail-closed): "rom" = built into the
++// firmware like this page, so nobody can replace it; "fs" = a file on the device, trusted only with a settings PIN (without one,
++// any web page may upload files). No "fxsrc" (older firmware, or no engine packaged): fxS stays null and there are no previews.
++let fxS=null, fxsP=null, fxBm=null, fxPvs=[];
++function fxEngine(){
++	const ok=cfg.fxsrc==="rom"||(cfg.fxsrc==="fs"&&cfg.pinSet===true);
++	return fxsP||(fxsP=(ok?loadFx():Promise.reject()).then(()=>new Promise(r=>d.head.append(h("script",{src:"/home/fx.js",onload:()=>r(window.FXS),onerror:()=>r()})))).then(async F=>{
++		if(!F||!F.preview) return;
++		for(let p=0,m=0,t=0;p<=m;) try{ const j=await getJSON("/json/palx?page="+p); m=j.m; F.setPalettes(j.p); p++; }catch(e){ if(++t>4) break; await sleep(300*t); }
++		try{ fxBm=await getJSON("/home/bm"); }catch(e){}
++		return fxS=F;
++	},()=>{ fxsP=null; })); // no PIN, or the effect list did not load (device busy): ask again next time
++}
++// the effect's default sliders and palette ("sx=24,pal=50" in its metadata), as Segment::setMode(fx,true) loads them
++function fxDef(i){
++	const o={fx:fxc.eff[i]};
++	for(const s of ((fxc.fxd[i]||"").split(";")[4]||"").split(",")){ const [k,v]=s.split("="); if(v) o[k]=+v; }
++	if(o.pal>0) o.dpal=o.pal; // what "Default" shows for this effect
++	return o;
++}
++// FXS options for a mood look (a cfg.moods item, or a built-in's /home/bm entry plus its fx); pal "" = the effect's default
++function moodFx(L){
++	if(!L||L.sx==null) return null;
++	let fx=fxc.eff.indexOf(L.fx); if(fx<0) fx=L.fxid|0;
++	const o=fxDef(fx), p=fxc.pal.indexOf(L.pal);
++	return Object.assign(o,L,{fx:o.fx,pal:p>=0?p:L.palid!=null?L.palid:o.pal|0,len:30});
++}
++// preview on canvas c with options of(); fxSweep() stops those whose canvas left the page, fxSweep(1) also refreshes the others
++function fxPv(c,of){ fxPvs.push([c,fxS.preview(c,of()),of]); return c; }
++function fxSweep(upd){ fxPvs=fxPvs.filter(([c,p,of])=>c.isConnected?(upd&&p.set(of()),1):p.stop()); }
+ 
+ // live strip preview: ~20 fps binary frames from /home/ws while that stream runs, otherwise /home/live "px" every second
+ // (16 evenly spaced LED colours per strip, sampled on the device; WLED's /json/live only exists in builds without
+@@ -431,8 +463,8 @@
+ 
+ /* ---------- helpers for moods ---------- */
+ function allMoods(){
+-	const out=cfg.bm.map((b,i)=>{ const ov=cfg.moods.find(m=>m.rep===i); return {id:i,n:ov?ov.n:b.n,fx:ov?ov.fx:b.fx,snd:b.snd,g:b.g,builtin:true,edited:!!ov}; });
+-	for(const m of cfg.moods) if(m.rep<0) out.push({id:m.id,n:m.n,fx:m.fx,g:m.col,custom:true});
++	const out=cfg.bm.map((b,i)=>{ const ov=cfg.moods.find(m=>m.rep===i); return {id:i,n:ov?ov.n:b.n,fx:ov?ov.fx:b.fx,snd:b.snd,g:b.g,builtin:true,edited:!!ov,L:ov||fxBm&&Object.assign({fx:b.fx},fxBm[i])}; });
++	for(const m of cfg.moods) if(m.rep<0) out.push({id:m.id,n:m.n,fx:m.fx,g:m.col,custom:true,L:m});
+ 	return out;
+ }
+ function applyMood(m){
+@@ -524,9 +556,10 @@
+ 	const cards=allMoods().map(m=>{
+ 		const menu=h("button",{class:"icon-btn",text:"⋯",title:"More options","aria-label":"More options for "+m.n,onclick:e=>{ e.stopPropagation(); moodMenu(m); }});
+ 		const edit=h("button",{class:"icon-btn",text:"✎",title:"Edit "+m.n,"aria-label":"Edit "+m.n,style:"margin-left:auto",onclick:e=>{ e.stopPropagation(); editMood(m); }});
++		const L=fxS&&moodFx(m.L); // the mood itself, animated (else the old gradient)
+ 		// name on its own line: on a phone, badges and buttons beside it left no room for the name
+ 		return h("div",{class:"card mood",onclick:()=>applyMood(m)},
+-			h("div",{class:"pv a"+(m.snd?" snd":""),style:"background-image:"+gradA(m.g)}),
++			L?fxPv(h("canvas",{class:"pv",width:1,height:1,"aria-hidden":"true"}),()=>L):h("div",{class:"pv a"+(m.snd?" snd":""),style:"background-image:"+gradA(m.g)}),
+ 			h("div",{class:"body",style:"flex-wrap:wrap"},h("span",{class:"nm",style:"flex-basis:100%",text:m.n,title:m.n}),m.snd?h("span",{class:"badge",text:"🎵 sound"}):null,m.edited?h("span",{class:"badge",text:"edited"}):null,m.custom?h("span",{class:"badge",text:"mine"}):null,edit,menu));
+ 	});
+ 	const free=cfg.lim.moods-cfg.moods.length;
+@@ -537,6 +570,7 @@
+ 			h("div",{class:"row",style:"margin-top:10px"},h("button",{class:"pri grow",text:"＋ Save current look as mood",disabled:free<=0,onclick:saveLook}),h("span",{class:"muted small",text:free+" free"}))),
+ 		photoMoodCard(free),
+ 		h("div",{class:"grid"},cards));
++	fxSweep(); if(!fxS) fxEngine().then(F=>{ if(F&&tab==="moods") softRender(); });
+ }
+ // pick up to `count` distinct, well-lit colours from a photo (drawn small on a canvas, never uploaded)
+ function photoColors(img,count){
+@@ -629,9 +663,9 @@
+ 		}
+ 		busy=false; if(q) tmr=setTimeout(flush,180);
+ 	};
+-	const send=o=>{ q=Object.assign(q||{},o); if(!tmr&&!busy) tmr=setTimeout(flush,180); };
++	const send=o=>{ Object.assign(seg,o); fxSweep(1); q=Object.assign(q||{},o); if(!tmr&&!busy) tmr=setTimeout(flush,180); }; // row previews follow
+ 	const sendNow=async o=>{ clearTimeout(tmr); q=Object.assign(q||{},o); while(busy) await sleep(50); await flush(); };
+-	const reload=async()=>{ await sleep(250); try{ st=await getJSON("/json/state"); seg=st.seg.find(x=>x.id===cfg.seg[k])||seg; }catch(e){} drawCtl(); };
++	const reload=async()=>{ await sleep(250); try{ st=await getJSON("/json/state"); seg=st.seg.find(x=>x.id===cfg.seg[k])||seg; }catch(e){} drawCtl(); fxSweep(1); };
+ 	const recent=()=>{ try{ return JSON.parse(lsGet("hgRecent")||"[]"); }catch(e){ return []; } };
+ 	const remember=x=>{ const r=recent().filter(c=>c!==x); r.unshift(x); lsSet("hgRecent",JSON.stringify(r.slice(0,8))); };
+ 	const setCol=(i,rgb)=>{ const col=[0,1,2].map(j=>(seg.col&&seg.col[j])?seg.col[j].slice(0,3):[0,0,0]); col[i]=rgb; seg.col=col; send({col}); };
+@@ -657,9 +691,12 @@
+ 		const order=fxc.eff.map((n,i)=>[n,i]).filter(([n,i])=>n&&n!=="RSVD"&&n!=="-"&&!fxMeta(i).only2D)
+ 			.sort((a,b)=>a[1]===0?-1:b[1]===0?1:a[0].localeCompare(b[0]));
+ 		const search=h("input",{type:"text",placeholder:"Search effects","aria-label":"Search effects",oninput:()=>drawList()});
+-		const drawList=()=>{ const f=search.value.toLowerCase();
++		// the other rows simulate their effect as a tap would play it: its own defaults, the strip's colours, palette and brightness
++		const pvo=i=>{ const o=Object.assign(fxDef(i),{len:30,col:seg.col,bri:seg.bri}); if(o.pal==null) o.pal=seg.pal; return o; };
++		const fxRow=i=>fxS?[fxS.has(fxc.eff[i])?null:h("span",{class:"muted",text:"≈",title:"Approximate preview"}),fxPv(h("canvas",{class:"fxb",width:1,height:1,"aria-hidden":"true"}),()=>pvo(i))]:null;
++		const drawList=()=>{ const f=search.value.toLowerCase(); list.textContent=""; fxSweep(); // stops the old rows' previews
+ 			list.replaceChildren(...order.filter(([n])=>!f||n.toLowerCase().includes(f)).map(([n,i])=>h("button",{class:i===seg.fx?"sel":"","aria-current":i===seg.fx?"true":null,text:n+(fxMeta(i).snd?" 🎵":""),
+-				onclick:async()=>{ seg.fx=i; drawList(); await sendNow({fx:i,fxdef:true}); await reload(); }},i===seg.fx?livePreview(k,"fxb"):null))); }; // the playing effect shows its live bar
++				onclick:async()=>{ seg.fx=i; drawList(); await sendNow({fx:i,fxdef:true}); await reload(); }},i===seg.fx?livePreview(k,"fxb"):fxRow(i)))); }; // the playing effect shows its live bar
+ 		drawCtl=()=>{
+ 			const m=fxMeta(seg.fx), parts=[];
+ 			// sliders: an empty label hides it, "!" keeps the default name; without metadata only speed and intensity
+@@ -719,8 +756,9 @@
+ 			mood?h("button",{class:"btn ghost",text:edit?"↺ Undo my changes":"↺ Back to "+mood.n,onclick:async()=>{ cmd({mood:mood.id,strip:k+1}); await reload(); drawList(); }}):null,
+ 			h("div",{class:"row"},h("a",{class:"btn ghost grow",href:"/",text:"Full LED page"}),h("button",{class:"pri grow",text:"Done",onclick:()=>close(null)}))));
+ 		drawList(); drawCtl();
++		if(!fxS) fxEngine().then(F=>{ if(F&&list.isConnected) drawList(); });
+ 		setTimeout(()=>{ const s=list.querySelector(".sel"); if(s) s.scrollIntoView({block:"nearest"}); },0);
+-	});
++	}).then(()=>fxSweep()); // closed: stop its previews
+ }
+ 
+ // scene name for buttons, toasts and links – a blank name would give an empty button

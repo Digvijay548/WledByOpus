@@ -1,0 +1,11 @@
+--- a/wled00/FX.cpp
++++ b/wled00/FX.cpp
+@@ -3500,7 +3500,7 @@
+   if (multi && SEGLEN > 1) {
+     //allocate segment data
+     unsigned dataSize = sizeof(uint32_t) + max(1, (int)SEGLEN -1) *3;
+-    if (!SEGENV.allocateData(dataSize)) candle(false); //allocation failed
++    if (!SEGENV.allocateData(dataSize)) { candle(false); return; } //allocation failed: fall back to single candle, don't continue with the (too small or null) buffer
+   } else {
+     unsigned dataSize = sizeof(uint32_t); // for last call timestamp
+     if (!SEGENV.allocateData(dataSize)) FX_FALLBACK_STATIC; //allocation failed

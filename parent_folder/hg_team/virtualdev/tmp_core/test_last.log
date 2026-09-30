@@ -1,0 +1,98 @@
+core_api test against device.js, port 18131, Node v24.15.0
+      port 80 not available (EADDRINUSE)
+PASS  GET / status 200, Content-Encoding gzip, text/html  (200 gzip text/html)
+PASS  GET / body == PAGE_index bytes of html_ui.h  (39967 B served, header 39967 B)
+PASS  GET / gunzips to the built index.htm  (124476 chars)
+PASS  ETag + If-None-Match -> 304  (1790682089-00-0000 -> 304)
+PASS  CORS header on /
+PASS  GET /wled/ (reverse-proxy path) serves the same page
+PASS  GET /common.js == JS_common  (200, 3671 B)
+PASS  GET /iro.js == JS_iro  (200, 9960 B)
+PASS  GET /liveview == PAGE_liveview  (200, 947 B)
+PASS  GET /liveview2D == PAGE_liveviewws2D  (200, 794 B)
+PASS  GET /style.css == PAGE_settingsCss  (200, 951 B)
+PASS  GET /settings == PAGE_settings  (200, 730 B)
+PASS  GET /settings/wifi == PAGE_settings_wifi  (200, 3398 B)
+PASS  GET /settings/leds == PAGE_settings_leds  (200, 10343 B)
+PASS  GET /settings/ui == PAGE_settings_ui  (200, 2939 B)
+PASS  GET /settings/um == PAGE_settings_um  (200, 3151 B)
+PASS  GET /settings/2D == PAGE_settings_2D  (200, 2696 B)
+PASS  GET /settings/common.js == JS_common  (200, 3671 B)
+PASS  GET /settings/style.css == PAGE_settingsCss  (200, 951 B)
+PASS  GET /welcome == PAGE_welcome  (200, 1743 B)
+PASS  GET /update == PAGE_update  (200, 2251 B)
+PASS  GET /edit == PAGE_edit  (200, 4157 B)
+PASS  GET /cpal.htm == PAGE_cpal  (200, 6447 B)
+PASS  GET /pixelforge.htm == PAGE_pixelforge  (200, 11122 B)
+PASS  GET /favicon.ico == favicon  (200, 156 B)
+PASS  unknown path -> 404 with PAGE_404  (404)
+PASS  OPTIONS -> 200 + Access-Control-Max-Age
+PASS  GET /settings/s.js?p=0 is a valid GetV()  (32 B)
+PASS  GET /settings/s.js?p=1 is a valid GetV()  (884 B)
+PASS  GET /settings/s.js?p=2 is a valid GetV()  (2919 B)
+PASS  GET /settings/s.js?p=3 is a valid GetV()  (119 B)
+PASS  GET /settings/s.js?p=4 is a valid GetV()  (2181 B)
+PASS  GET /settings/s.js?p=5 is a valid GetV()  (1039 B)
+PASS  GET /settings/s.js?p=6 is a valid GetV()  (414 B)
+PASS  GET /settings/s.js?p=8 is a valid GetV()  (665 B)
+PASS  GET /settings/s.js?p=10 is a valid GetV()  (122 B)
+PASS  GET /settings/s.js?p=11 is a valid GetV()  (297 B)
+PASS  /settings/s.js?p=12 -> 501 alert
+PASS  /json/eff length == dev.effects.length  (220 vs 220)
+PASS  /json/effects (UI alias) == /json/eff
+PASS  /json/pal(ettes) == dev.palettes  (72 palettes)
+PASS  /json/fxdata length == effects  (220)
+PASS  /json/palx?page=0 has m and p  (m=9)
+PASS  /json/si has state and info  (2 segs)
+PASS  /json has state, info, effects, palettes
+PASS  /json/nodes == {"nodes":[]}
+PASS  /json/info has fs.pmt and ws
+PASS  /json/cfg minimal
+PASS  /json/pins
+PASS  /json/live (HTTP peek fallback)  (120)
+PASS  /json/nothing -> 501 {"error":4}
+PASS  POST /json/state with Content-Type text/plain is accepted
+PASS  POST invalid JSON -> 400 {"error":9}
+PASS  POST /json/state {"v":true} -> full state with the change  (fx 9 (want 9))
+PASS  dev.state() follows
+PASS  POST without v -> {"success":true}
+PASS  POST /json/si {"v":true} -> {state,info}
+PASS  psave -> /presets.json
+PASS  ps:3 applies the preset and reports ps 3  (ps 3, fx 9, bri 100)
+PASS  pdel removes it
+PASS  /win&A=150&FX=0 -> XML and applied  (<?xml version="1.0" ?><vs><ac>150</ac><cl>255</cl><cl>120</c)
+PASS  /upload + /edit?func=edit  (File Uploaded!)
+PASS  version-info.json says neverAsk (no usage report for a virtual device)
+PASS  /ws: first message is {state, info}
+PASS  /ws: 'L' frames after {"lv":true}  (22 frames/s, 362 B)
+PASS  /ws: live frames carry colour
+PASS  /ws: frames stop after {"lv":false}  (0 extra)
+PASS  /ws: a state change is pushed back
+PASS  /ws: {"v":true} -> state+info reply
+PASS  /wled/ws: first message is {state, info}
+PASS  /wled/ws: 'L' frames after {"lv":true}  (22 frames/s, 362 B)
+PASS  /wled/ws: live frames carry colour
+PASS  /wled/ws: frames stop after {"lv":false}  (0 extra)
+PASS  /wled/ws: a state change is pushed back
+PASS  /wled/ws: {"v":true} -> state+info reply
+      browser: Playwright from C:\Users\DigvijayPatilLM\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\playwright, launch {}
+SKIP  browser at "/": port 80 belongs to another server, the UI's ws://127.0.0.1/ws would reach that one
+PASS  browser /wled/: effect list shows all 216 effects  (216)
+PASS  browser /wled/: websocket open  (ws://127.0.0.1:18131/wled/ws)
+PASS  browser /wled/: selecting "Rainbow" sends it (ws)
+PASS  browser /wled/: device runs the selected effect  (fx 9)
+PASS  browser /wled/: peek gets live frames over /ws  (54 frames in 2.5 s, iframe /wled/liveview?ws)
+PASS  browser /wled/: peek canvas shows colours  (192000 lit px)
+PASS  browser /wled/: 0 console errors  (0 ws errors ignored)
+PASS  browser /settings: opens without errors  ()
+PASS  browser /settings/wifi: opens without errors  ()
+PASS  browser /settings/leds: opens without errors  ()
+PASS  browser /settings/ui: opens without errors  ()
+PASS  browser /settings/sync: opens without errors  ()
+PASS  browser /settings/time: opens without errors  ()
+PASS  browser /settings/sec: opens without errors  ()
+PASS  browser /settings/um: opens without errors  ()
+PASS  browser /settings/2D: opens without errors  ()
+PASS  browser /settings/pins: opens without errors  ()
+
+92/92 passed

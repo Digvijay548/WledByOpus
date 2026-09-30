@@ -1,0 +1,152 @@
+--- rc3b.cpp	2026-09-29 18:00:44.601875600 +0530
++++ fw_rebased.cpp	2026-09-29 18:00:44.657147100 +0530
+@@ -59,6 +59,13 @@
+ constexpr size_t   HG_KEY_LEN       = 10;   // API key characters (without terminating NUL)
+ static const char  HG_KEY_CHARS[]   = "abcdefghjkmnpqrstuvwxyz23456789"; // no easily confused characters
+ constexpr uint8_t  HG_PX_SAMPLES    = 16;   // pixel colors per strip in /home/live (page preview)
++// real-time preview over the websocket /home/ws
++constexpr uint8_t  HG_WS_SAMPLES    = 48;   // pixel colors per strip in each frame
++constexpr uint8_t  HG_WS_CLIENTS    = 2;    // connected pages at most
++constexpr uint16_t HG_WS_FRAME_MS   = 50;   // one frame every 50 ms (~20 fps); WLED's own live view uses 40 ms (ws.cpp)
++constexpr uint16_t HG_WS_KEEPALIVE_MS = 1000; // an unchanged frame is sent again after this time
++constexpr uint32_t HG_WS_MIN_HEAP   = 16384; // no frames while the largest free heap block is smaller (no PSRAM)
++constexpr size_t   HG_WS_FRAME_LEN  = 5 + 3 * HG_STRIPS * HG_WS_SAMPLES;
+ 
+ // ----- timing -----
+ constexpr uint16_t HG_DRY_DEBOUNCE_MS = 50;   // dry contact wall switch
+@@ -302,6 +309,12 @@
+ // timestamps of the last pulse seen on AC-sensing inputs, written from the GPIO interrupt
+ static volatile uint32_t hgAcLastPulse[HG_SWITCHES] = {0};
+ 
++#ifndef WLED_DISABLE_WEBSOCKETS
++// real-time LED preview for the page. WLED's own /ws live view serves only one client (ws.cpp), so the usermod has its own.
++static AsyncWebSocket hgWs("/home/ws");
++static volatile uint32_t hgWsIds[HG_WS_CLIENTS] = {0};  // ids of accepted clients (0 = free), written by the web task
++#endif
++
+ static void IRAM_ATTR hgAcPulseIsr(void *arg) {
+   *static_cast<volatile uint32_t*>(arg) = millis();
+ }
+@@ -545,6 +558,16 @@
+     void serveApi(AsyncWebServerRequest *request);
+     void receiveConfig(AsyncWebServerRequest *request);
+     bool pinOk(const AsyncWebParameter *pin);
++#ifndef WLED_DISABLE_WEBSOCKETS
++    // real-time preview (/home/ws), only used in loop() except where noted
++    uint32_t wsPushAt = 0;         // last frame check
++    uint32_t wsSentAt = 0;         // last frame sent
++    uint32_t wsCleanAt = 0;        // last cleanupClients()
++    volatile uint32_t wsHash = 0;  // hash of the last frame sent; set to 0 by the web task so a new client gets a frame at once
++    uint8_t  wsFrame[HG_WS_FRAME_LEN];
++    void onWsEvent(AsyncWebSocketClient *client, AwsEventType type, void *arg);
++    void pushLive(uint32_t now);
++#endif
+ 
+   public:
+     void setup() override;
+@@ -1894,10 +1917,95 @@
+   request->send(403, FPSTR(CONTENT_TYPE_JSON), F("{\"ok\":false,\"err\":\"key\"}"));
+ }
+ 
++#ifndef WLED_DISABLE_WEBSOCKETS
++// runs in the web task. A preview client needs the API key (/home/ws?k=KEY): browsers let any web site open a
++// websocket to any host, and the LED colors show when someone is at home. At most HG_WS_CLIENTS are accepted.
++void HomeGadgets::onWsEvent(AsyncWebSocketClient *client, AwsEventType type, void *arg) {
++  if (type == WS_EVT_CONNECT) {
++    AsyncWebServerRequest *request = static_cast<AsyncWebServerRequest*>(arg);  // the upgrade request (AsyncWebSocket.cpp)
++    const AsyncWebParameter *keyParam = request ? request->getParam(F("k")) : nullptr;
++    int slot = -1;
++    if (enabled && keyParam && keyOk(keyParam->value().c_str())) {  // keyOk() also rejects while no key exists yet
++      for (unsigned i = 0; i < HG_WS_CLIENTS; i++) if (!hgWsIds[i]) { slot = i; break; }
++    }
++    if (slot < 0) {
++      client->close();
++      return;
++    }
++    hgWsIds[slot] = client->id();  // ids start at 1
++    wsHash = 0;                    // send the next frame even if the LEDs did not change
++  } else if (type == WS_EVT_DISCONNECT) {
++    for (unsigned i = 0; i < HG_WS_CLIENTS; i++) if (hgWsIds[i] == client->id()) hgWsIds[i] = 0;
++  }
++}
++
++// sends the LED colors to the preview clients, at most every HG_WS_FRAME_MS. Runs in loop() like the effects, so the
++// pixel buffer is consistent. Binary frame: 'H', version 1, bri, n0, n1, then n0 + n1 R,G,B samples evenly spread
++// over each strip's segment. White is added to RGB (like WLED's live view) and colors are not scaled by brightness:
++// the page maps brightness the way the gamma-corrected LEDs show it.
++void HomeGadgets::pushLive(uint32_t now) {
++  if (now - wsPushAt < HG_WS_FRAME_MS) return;
++  wsPushAt = now;
++  if (now - wsCleanAt >= HG_WS_KEEPALIVE_MS) {
++    wsCleanAt = now;
++    hgWs.cleanupClients(HG_WS_CLIENTS);
++  }
++  bool anyClient = false;
++  for (unsigned i = 0; i < HG_WS_CLIENTS; i++) if (hgWsIds[i]) anyClient = true;
++  if (!anyClient || ESP.getMaxAllocHeap() < HG_WS_MIN_HEAP) return;  // nobody watching, or low on memory: skip
++
++  size_t pos = 5;
++  wsFrame[0] = 'H';
++  wsFrame[1] = 1;
++  wsFrame[2] = bri;
++  for (unsigned k = 0; k < HG_STRIPS; k++) {
++    unsigned n = 0;
++    if (stripSeg[k] < strip.getSegmentsNum()) {
++      const Segment &seg = strip.getSegment(stripSeg[k]);
++      const unsigned len = seg.stop > seg.start ? seg.stop - seg.start : 0;
++      n = len < HG_WS_SAMPLES ? len : HG_WS_SAMPLES;
++      for (unsigned j = 0; j < n; j++) {
++        const uint32_t c = bri ? strip.getPixelColor(seg.start + (n > 1 ? j * (len - 1) / (n - 1) : 0)) : 0;
++        const uint8_t w = W(c);
++        wsFrame[pos++] = qadd8(w, R(c));
++        wsFrame[pos++] = qadd8(w, G(c));
++        wsFrame[pos++] = qadd8(w, B(c));
++      }
++    }
++    wsFrame[3 + k] = n;
++  }
++
++  // unchanged frames (a static look) are only repeated as a keepalive
++  uint32_t hash = 2166136261UL;
++  for (size_t i = 0; i < pos; i++) hash = (hash ^ wsFrame[i]) * 16777619UL;
++  if (hash == wsHash && now - wsSentAt < HG_WS_KEEPALIVE_MS) return;
++  bool sent = false;
++  for (unsigned i = 0; i < HG_WS_CLIENTS; i++) {
++    const uint32_t id = hgWsIds[i];
++    AsyncWebSocketClient *c = id ? hgWs.client(id) : nullptr;
++    if (!c || c->queueLength() > 0) continue;  // previous frame not sent yet: skip this one (like ws.cpp sendLiveLedsWs)
++    c->binary(wsFrame, pos);
++    sent = true;
++  }
++  if (sent) {
++    wsHash = hash;
++    wsSentAt = now;
++  }
++}
++#endif
++
+ void HomeGadgets::addRoutes() {
+   if (routesAdded) return;
+   routesAdded = true;
+ 
++#ifndef WLED_DISABLE_WEBSOCKETS
++  // real-time preview; registered before "/home", which answers every other "/home/..." path with 404
++  hgWs.onEvent([this](AsyncWebSocket *, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *, size_t) {
++    onWsEvent(client, type, arg);
++  });
++  server.addHandler(&hgWs);
++#endif
++
+   // "/home" also matches "/home/..." in AsyncWebServer, so the specific routes are registered first
+   server.on(F("/home/live"), HTTP_GET, [this](AsyncWebServerRequest *request) { serveLive(request); });
+   server.on(F("/home/stats"), HTTP_GET, [this](AsyncWebServerRequest *request) { serveStats(request); });
+@@ -2189,6 +2297,9 @@
+   handleClap(now);
+   handleTimers(now);
+   handleClock(now);
++#ifndef WLED_DISABLE_WEBSOCKETS
++  pushLive(now);
++#endif
+ }
+ 
+ void HomeGadgets::addToJsonState(JsonObject &root) {

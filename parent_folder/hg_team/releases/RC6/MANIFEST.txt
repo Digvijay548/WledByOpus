@@ -1,0 +1,52 @@
+home_gadgets RC6 CANDIDATE: snapshot by wled-main-ad right after the build (19:08:59), before any further edit
+RC6 = RC5 + usermod changes: 89 decision-8 captions/accessibility (page), 2a v2.3 GET /home/bm, F1/F2/F3/F4/F5/F12/F14/F18/F19 fixes, serveLive u_size guard, rel "RC6", readme notes
+status: AWAITING 84 review (after the RC5 review). Flash image stays RC4b (RC5 once passed).
+build: ESP32 home_gadgets SUCCESS, flash 84.9% (1,335,037 B), RAM 25.7%, 0 warnings from home_gadgets.cpp; page 83,717 B / gz 29,732 B; esptool image_info valid lines: 2
+embedded page verified: gunzip(home_page_gz.h) == stripped src/home.htm -> true 83750
+nodemcuv2: not rebuilt (no core file changed since RC5)
+
+behaviour changes vs RC5 (for review):
+  - JSON state "on": now accepts true/false, 0/1 (previously 0/1 were silently ignored) and text via hgParseOn: 1/true/on, 0/false/off, t/toggle; other text ignored (previously any text starting with 't' toggled, so "true" toggled)
+  - JSON strip command: on/off only (toggle ignored, as before)
+  - GET /home/api: new 400 for a present-but-non-numeric relay/mood/scene/strip (previously toInt -> 0); strip outside 1..3 -> 400 (previously clamped); alloff needs 1/true/on (previously any value); 503 {err:busy} when a valid command meets a full queue (previously 400)
+  - POST /home/cfg: 429 {err:wait} during the PIN retry cooldown (previously 401); a failed cap no longer blocks saving the other sections (ce still set)
+  - cap: an id of an unused custom slot is ignored (falls back to rep/free slot)
+  - initHardware: relays that stay on keep onSince (auto-off timers survive a pin/electrical change)
+  - new GET /home/bm: [{pal,sx,ix,bri,col[3]} x 23] streamed from HG_BUILTIN_MOODS, no key, no pDoc
+
+md5 (full) of image, flash files and usermod sources:
+68de3afe5523fef999733184a2ea8fc4 *home_gadgets_RC6_firmware.bin
+98e3104e4eeb92461edc0a703b0ef4b7 *bootloader.bin
+c1d5097573699bef1d67aff92fa34ec0 *partitions.bin
+e6327541e2dc394ca2c3b3280ac0f39f *boot_app0.bin
+78b7bbd054ecda60ae2301103d7698bb *flash.ps1
+4d1118049915ecf18e50e19975cf2484 *src/gen_page.py
+5cecea33f00274e9a3b45bd042dc9fcb *src/home.htm
+92ab4def81bcc314e97e0e73382e809e *src/home_gadgets.cpp
+fef46b2bc8084b9d61cbf5601964fd69 *src/library.json
+214b23bddd617cd71e1d95f119ca3472 *src/platformio_override.ini
+c66d7f9cbb2f8765f91ab9c4ee55734b *src/readme.md
+
+core wled00 (= RC5, unchanged; see hg_team/releases/RC5/core and core_fixes.diff):
+a82104ae243791cfa450a5f3bd89b471 *wled00/FX_fcn.cpp
+7717d19de8ed51ff38398bcf514b59f9 *wled00/bus_manager.h
+9589addcbc6bba343ee6292dd9f20260 *wled00/bus_manager.cpp
+4b0002ee4c21c9fc0611119dd7d8b35a *wled00/FX.cpp
+78daa87b7a8232d4ef64160df6be2668 *wled00/file.cpp
+8e8d4bb5ea33022ea3657d364343bba1 *wled00/wled.cpp
+f328dc766c2e378b24208af84b716c93 *wled00/wled_metadata.cpp
+c255800229753d28a705c134b1094f81 *wled00/const.h
+d52073ded9a19fe0d05af5246ff209a6 *wled00/pin_manager.h
+0917adb80b134b56ba0efc210a4d4201 *wled00/colors.cpp
+
+build environment: Tasmota platform-espressif32 2024.06.00 (Arduino 2.0.18 / IDF 4.4.8), env home_gadgets (src/platformio_override.ini)
+7690c0fd2c9ef08e427e6283106969b0 *platformio.ini
+d9e44c06ca8226a6c6fbd5ecedc8bcf9 *package-lock.json
+38ec8e056431491bf9fd2b14fce0af60 *usermods/audioreactive/audio_reactive.cpp
+6d4ee8b5cb62e4fc525b1d7bed94bfee *usermods/audioreactive/audio_source.h
+
+ELF of this build (for repeatable binary checks; appended by wled-main-ad):
+44cfe6477d83034c2039d4c2c962e0f9 *.pio/build/home_gadgets/firmware.elf
+
+flash.ps1 updated by wled-main-ad after the snapshot, before 84's review: usage says COMx, plus a hint that COM5/COM6 on this PC are Bluetooth. New md5 (supersedes the flash.ps1 line above):
+a5da9e12d46071ee85f3012c112e1bd0 *flash.ps1

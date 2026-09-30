@@ -1,0 +1,67 @@
+home_gadgets RC5 CANDIDATE: snapshot by wled-main-ad; ESP32 image copied right after its build (18:58:40), before the ESP8266 check build and before any edit
+RC5 = RC4b usermod (only change: HG_RELEASE "RC4b" -> "RC5") + wled-main-84's core fixes H1, H2+N3, H3, H4, X1, X2, M8c, M1, M2, M4, X24 (N1 NOT applied)
+status: AWAITING 84 review. RC4b stays the flash image until RC5 passes.
+
+ESP32 (env home_gadgets): SUCCESS, flash 84.7% (1,332,205 B; RC4b 1,332,009), RAM 25.7%; 0 warnings in the 7 touched core files and in home_gadgets.cpp; esptool image_info valid
+ESP8266 (env nodemcuv2, compile check only): SUCCESS, flash 89.1% (930,707 of 1,044,464 B), RAM 57.2% (46,868 of 81,920 B)
+  - 1st attempt failed in the third-party lib IRremoteESP8266 (locale/en-AU.h missing: .pio/libdeps/nodemcuv2/IRremoteESP8266 was an incomplete download, 2 of 17 locale files). Deleted that libdeps folder, PlatformIO re-fetched v2.9.0, 2nd attempt SUCCESS. No source change.
+  - 20 compiler warnings in touched core files (ESP8266 flags: sign-compare, unused, -Wreorder in BusDigital, deprecated onEvent). Attribution against core_fixes.diff: 0 on or within 2 lines of a changed line; the BusDigital -Wreorder comes from the unchanged initializer list (bus_manager.cpp 120-135 identical to RC5_pre). => no new warnings by line attribution (no separate pre-fix ESP8266 baseline build was made).
+
+md5 (full) of image, flash files, patch and usermod sources:
+f11f0acbafef48cf8ea49cbee0e9e0f6 *home_gadgets_RC5_firmware.bin
+98e3104e4eeb92461edc0a703b0ef4b7 *bootloader.bin
+c1d5097573699bef1d67aff92fa34ec0 *partitions.bin
+e6327541e2dc394ca2c3b3280ac0f39f *boot_app0.bin
+76212f1af04ac1357911d35616f60a9b *flash.ps1
+97019944586817157fb73534b24147c8 *core_fixes.diff
+4d1118049915ecf18e50e19975cf2484 *src/gen_page.py
+54348e1071fc8ee10aa95be3d2fe4905 *src/home.htm
+51b2dbb3bf524fe9927b63648e910eea *src/home_gadgets.cpp
+fef46b2bc8084b9d61cbf5601964fd69 *src/library.json
+214b23bddd617cd71e1d95f119ca3472 *src/platformio_override.ini
+746000ab477331c3045adb4587e74c90 *src/readme.md
+
+core files AFTER (copies in core/):
+4b0002ee4c21c9fc0611119dd7d8b35a *core/FX.cpp
+a82104ae243791cfa450a5f3bd89b471 *core/FX_fcn.cpp
+9589addcbc6bba343ee6292dd9f20260 *core/bus_manager.cpp
+7717d19de8ed51ff38398bcf514b59f9 *core/bus_manager.h
+78daa87b7a8232d4ef64160df6be2668 *core/file.cpp
+8e8d4bb5ea33022ea3657d364343bba1 *core/wled.cpp
+f328dc766c2e378b24208af84b716c93 *core/wled_metadata.cpp
+
+core files BEFORE (from RC5_pre/CORE_BEFORE.txt; copies in RC5_pre/wled00/):
+  Core files BEFORE the RC5 core fixes (recorded by wled-main-30 at 18:29:49; the RC4b usermod state)
+  870532df5b3441795b0d68cec1175f93 *wled00/FX_fcn.cpp
+  8f132c11c9fd519e4b4070853b092995 *wled00/bus_manager.h
+  601c0a9cf78e73decfa580050cf83914 *wled00/bus_manager.cpp
+  66a360def427de46ef9aea608d146dd8 *wled00/FX.cpp
+  5e0066012cdb96b972d458d1774e83c6 *wled00/file.cpp
+  78020fcf2916852d41c598578ec660d3 *wled00/wled.cpp
+  0426a0ec741e85f5aa020ae5f550b26e *wled00/wled_metadata.cpp
+  c255800229753d28a705c134b1094f81 *wled00/const.h
+  d52073ded9a19fe0d05af5246ff209a6 *wled00/pin_manager.h
+    15:13:57 wled00/FX_fcn.cpp
+    15:13:57 wled00/bus_manager.h
+    15:13:57 wled00/bus_manager.cpp
+    15:13:57 wled00/FX.cpp
+    15:13:57 wled00/file.cpp
+    15:13:58 wled00/wled.cpp
+    15:13:58 wled00/wled_metadata.cpp
+  0917adb80b134b56ba0efc210a4d4201 *WLED-main/wled00/colors.cpp
+
+unchanged core files used by the usermod:
+c255800229753d28a705c134b1094f81 *wled00/const.h
+d52073ded9a19fe0d05af5246ff209a6 *wled00/pin_manager.h
+0917adb80b134b56ba0efc210a4d4201 *wled00/colors.cpp
+
+build environment: platform Tasmota platform-espressif32 2024.06.00 (Arduino 2.0.18 / IDF 4.4.8) for ESP32; espressif8266@4.2.1 for nodemcuv2; env home_gadgets from src/platformio_override.ini
+7690c0fd2c9ef08e427e6283106969b0 *platformio.ini
+d9e44c06ca8226a6c6fbd5ecedc8bcf9 *package-lock.json
+38ec8e056431491bf9fd2b14fce0af60 *usermods/audioreactive/audio_reactive.cpp
+6d4ee8b5cb62e4fc525b1d7bed94bfee *usermods/audioreactive/audio_source.h
+embedded page verified: gunzip(home_page_gz.h) == stripped src/home.htm -> true 77449 (page unchanged from RC4b, 54348e10)
+
+STATUS (appended by wled-main-30 at 19:09): **84 RC5 REVIEW PASS. RC5 = THE flash image** (replaces RC4b). Disassembly confirmed H1, H2, N3, H3 (ESP32 and ESP8266), X2, M1 and X24; no device test.
+
+logs/ added by wled-main-ad: esp32_home_gadgets_build.log, nodemcuv2_attempt1_irremote_fail.log (contains the 20 core-file warnings; attempt 2 reused those objects), nodemcuv2_attempt2_success.log. RC5 ELF md5 not available (.pio rebuilt since).

@@ -1,0 +1,40 @@
+--- a/wled00/bus_manager.h
++++ b/wled00/bus_manager.h
+@@ -141,7 +141,7 @@
+     virtual unsigned skippedLeds() const                        { return 0; }
+     virtual uint16_t getFrequency() const                       { return 0U; }
+     virtual uint16_t getLEDCurrent() const                      { return 0; }
+-    virtual uint16_t getUsedCurrent() const                     { return 0; }
++    virtual uint32_t getUsedCurrent() const                     { return 0; }
+     virtual uint16_t getMaxCurrent() const                      { return 0; }
+     virtual uint8_t  getDriverType() const                      { return 0; } // Default to RMT (0) for non-digital buses
+     virtual size_t   getBusSize() const                         { return sizeof(Bus); } // currently unused
+@@ -261,7 +261,7 @@
+     unsigned skippedLeds() const override    { return _skip; }
+     uint16_t getFrequency() const override   { return _frequencykHz; }
+     uint16_t getLEDCurrent() const override  { return _milliAmpsPerLed; }
+-    uint16_t getUsedCurrent() const override { return _milliAmpsTotal; }
++    uint32_t getUsedCurrent() const override { return _milliAmpsTotal; }
+     uint16_t getMaxCurrent() const override  { return _milliAmpsMax; }
+     uint8_t  getDriverType() const override  { return _driverType; }
+     void     setCurrentLimit(uint16_t milliAmps) { _milliAmpsLimit = milliAmps; }
+@@ -287,7 +287,7 @@
+     uint32_t _colorSum; // total color value for the bus, updated in setPixelColor(), used to estimate current
+     void    *_busPtr;
+ 
+-    static uint16_t _milliAmpsTotal; // is overwitten/recalculated on each show()
++    static uint32_t _milliAmpsTotal; // is overwitten/recalculated on each show(), 32 bit: one output can draw more than 65.5 A
+ 
+     inline uint32_t restoreColorLossy(uint32_t c, uint8_t restoreBri) const {
+       if (restoreBri < 255) {
+--- a/wled00/bus_manager.cpp
++++ b/wled00/bus_manager.cpp
+@@ -1579,7 +1579,7 @@
+ int8_t  Bus::_cctBlend = 0; // -128 to +127
+ uint8_t Bus::_gAWM = 255;
+ 
+-uint16_t BusDigital::_milliAmpsTotal = 0;
++uint32_t BusDigital::_milliAmpsTotal = 0;
+ 
+ std::vector<std::unique_ptr<Bus>> BusManager::busses;
+ uint16_t BusManager::_gMilliAmpsUsed = 0;

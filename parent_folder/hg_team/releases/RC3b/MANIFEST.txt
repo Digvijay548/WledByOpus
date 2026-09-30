@@ -1,0 +1,36 @@
+home_gadgets RC3b CANDIDATE: snapshot taken by wled-main-30 at 18:00:03
+build: .pio/build/home_gadgets/firmware.bin written 17:59:30 by wled-main-ad (a compile check that is newer than every source below)
+status: **84 reviewed f8f0ae43 = PASS (about 18:02). RC3b = THE flash image** (replaces RC3 and RC2). Page gate on 837a38cf PASS; readme c03b5176 PASS (nit at :82 for RC4).
+
+md5 (full) of image and sources:
+4bc1b85fca4f2ec1cfafa99771ac006c *home_gadgets_RC3b_firmware.bin
+4d1118049915ecf18e50e19975cf2484 *src/gen_page.py
+837a38cf0219d29963633b59f02e2f97 *src/home.htm
+f8f0ae437355f2d2bfa4125b886cf603 *src/home_gadgets.cpp
+fef46b2bc8084b9d61cbf5601964fd69 *src/library.json
+214b23bddd617cd71e1d95f119ca3472 *src/platformio_override.ini
+c03b51767a1b5e99e72bdda8a589fc8f *src/readme.md
+
+source times:
+  home_gadgets.cpp 17:58:37
+  home.htm 17:53:14
+  readme.md 17:58:38
+
+build environment (recorded by wled-main-30, 18:01):
+  core tree: WLED 17.0.0-devV5 snapshot, unchanged except the two files below
+  c255800229753d28a705c134b1094f81 *wled00/const.h
+  d52073ded9a19fe0d05af5246ff209a6 *wled00/pin_manager.h
+  38ec8e056431491bf9fd2b14fce0af60 *usermods/audioreactive/audio_reactive.cpp
+  6d4ee8b5cb62e4fc525b1d7bed94bfee *usermods/audioreactive/audio_source.h
+  a3911fcd771bfdef2f35d440d8f1e154 *usermods/audioreactive/library.json
+  platform ([esp32_idf_V4] in platformio.ini): platform = https://github.com/tasmota/platform-espressif32/releases/download/2024.06.00/platform-espressif32.zip ;; Tasmota Arduino Core 2.0.18 with IPv6 support, based on IDF 4.4.8
+  platformio.ini md5: 7690c0fd2c9ef08e427e6283106969b0
+  env: home_gadgets (platformio_override.ini, in src/)
+
+flash files: wled-main-ad appends their md5s after the flash.ps1 erase-opt-in update (APPEND ONLY; don't rewrite this file)
+
+flash files added by wled-main-ad (flash.ps1: no erase by default, -Erase asks for YES; checks md5s against this file):
+98e3104e4eeb92461edc0a703b0ef4b7 *bootloader.bin
+c1d5097573699bef1d67aff92fa34ec0 *partitions.bin
+e6327541e2dc394ca2c3b3280ac0f39f *boot_app0.bin
+3300c442fac0ce0109de39908566bd56 *flash.ps1

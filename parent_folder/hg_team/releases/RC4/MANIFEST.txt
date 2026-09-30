@@ -1,0 +1,29 @@
+home_gadgets RC4 CANDIDATE: snapshot taken by wled-main-ad right after the build (18:20:26), before any further edit
+build: .pio/build/home_gadgets/firmware.bin written 18:19:46; flash 84.7% (1,331,933 B), RAM 25.7%, 0 warnings from home_gadgets
+embedded page verified: gunzip(home_page_gz.h) == stripped src/home.htm (77,449 B); gzip 26.x KB
+status: AWAITING 84 review. RC3b stays the flash image until RC4 passes.
+contents vs RC3b: 2a v2.2 ws preview (+84 n1, (b) lock, e2 wss), 89 captions, p1/p2, X22(2) PIN card, o1-o3 in moods, r1/r2, rel="RC4", NVS mig flag, readme X22/15-min/IoT/backup wording
+
+md5 (full) of image, flash files and sources:
+7ede6775444c8808d52dcf97fb633c4f *home_gadgets_RC4_firmware.bin
+98e3104e4eeb92461edc0a703b0ef4b7 *bootloader.bin
+c1d5097573699bef1d67aff92fa34ec0 *partitions.bin
+e6327541e2dc394ca2c3b3280ac0f39f *boot_app0.bin
+f01142872a83f326dbe2cbc4cb4636d9 *flash.ps1
+4d1118049915ecf18e50e19975cf2484 *src/gen_page.py
+fbe4671a70492542808879f79c15c7b5 *src/home.htm
+964c4f2921b285e4b68e765c5ec41488 *src/home_gadgets.cpp
+fef46b2bc8084b9d61cbf5601964fd69 *src/library.json
+214b23bddd617cd71e1d95f119ca3472 *src/platformio_override.ini
+746000ab477331c3045adb4587e74c90 *src/readme.md
+
+build environment:
+c255800229753d28a705c134b1094f81 *wled00/const.h
+d52073ded9a19fe0d05af5246ff209a6 *wled00/pin_manager.h
+38ec8e056431491bf9fd2b14fce0af60 *usermods/audioreactive/audio_reactive.cpp
+6d4ee8b5cb62e4fc525b1d7bed94bfee *usermods/audioreactive/audio_source.h
+a3911fcd771bfdef2f35d440d8f1e154 *usermods/audioreactive/library.json
+7690c0fd2c9ef08e427e6283106969b0 *platformio.ini
+d9e44c06ca8226a6c6fbd5ecedc8bcf9 *package-lock.json
+  platform: Tasmota platform-espressif32 2024.06.00 (Arduino 2.0.18 / IDF 4.4.8), env home_gadgets (src/platformio_override.ini)
+  note: first build attempt failed in npm ci/cdata.js (domutils missing, concurrent node_modules change at 18:18); retry succeeded

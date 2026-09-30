@@ -1,0 +1,10 @@
+--- a/wled00/FX.cpp
++++ b/wled00/FX.cpp
+@@ -4417,6 +4417,7 @@
+  */
+ void mode_flow(void)
+ {
++  if (SEGLEN <= 1) FX_FALLBACK_STATIC; // zoneLen below would be 0 (division by zero)
+   unsigned counter = 0;
+   if (SEGMENT.speed != 0)
+   {

@@ -1,0 +1,202 @@
+Processing home_gadgets (board: esp32dev; platform: https://github.com/tasmota/platform-espressif32/releases/download/2024.06.00/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 66 packages, and audited 67 packages in 8s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@17.0.0-devV5 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (2024.6.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.18+sha.8ba0dc0 
+ - tool-esptoolpy @ 4.7.4 
+ - tool-mklittlefs @ 3.2.0 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 39 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.10
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- IRremoteESP8266 @ 2.9.0
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.ac44e32
+|-- AsyncMqttClient @ 0.9.0
+|-- NeoPixelBus @ 2.8.4+sha.1d7ff38
+|-- audioreactive
+|-- home_gadgets
+|-- ESPmDNS @ 2.0.0
+|-- Wire @ 2.0.0
+|-- Update @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- SPI @ 2.0.0
+|-- wled-espnow
+|-- NeoESP32RmtHI
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio\build\home_gadgets\liba4f\audioreactive\audio_reactive.cpp.o
+Compiling .pio\build\home_gadgets\lib0af\home_gadgets\home_gadgets.cpp.o
+Compiling .pio\build\home_gadgets\lib6d0\wled_espnow\wled_espnow.cpp.o
+Compiling .pio\build\home_gadgets\src\FX.cpp.o
+Compiling .pio\build\home_gadgets\src\FX_2Dfcn.cpp.o
+Compiling .pio\build\home_gadgets\src\FX_fcn.cpp.o
+Compiling .pio\build\home_gadgets\src\FXparticleSystem.cpp.o
+Compiling .pio\build\home_gadgets\src\alexa.cpp.o
+Compiling .pio\build\home_gadgets\src\bus_manager.cpp.o
+Compiling .pio\build\home_gadgets\src\button.cpp.o
+Compiling .pio\build\home_gadgets\src\cfg.cpp.o
+Compiling .pio\build\home_gadgets\src\colors.cpp.o
+Compiling .pio\build\home_gadgets\src\dmx_input.cpp.o
+Compiling .pio\build\home_gadgets\src\dmx_output.cpp.o
+Compiling .pio\build\home_gadgets\src\e131.cpp.o
+Compiling .pio\build\home_gadgets\src\file.cpp.o
+In file included from C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from usermods/audioreactive/audio_source.h:11,
+                 from usermods/audioreactive/audio_reactive.cpp:203:
+C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:63:31: warning: 'adc_digi_pattern_table_t' is deprecated [-Wdeprecated-declarations]
+     adc_digi_pattern_table_t *adc1_pattern;  /*!<Pointer to pattern table for digital controller. The table size defined by `adc1_pattern_len`. */
+                               ^~~~~~~~~~~~
+In file included from C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from usermods/audioreactive/audio_source.h:11,
+                 from usermods/audioreactive/audio_reactive.cpp:203:
+C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:39:3: note: declared here
+ } adc_digi_pattern_table_t __attribute__((deprecated));
+   ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from usermods/audioreactive/audio_source.h:11,
+                 from usermods/audioreactive/audio_reactive.cpp:203:
+C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:64:31: warning: 'adc_digi_pattern_table_t' is deprecated [-Wdeprecated-declarations]
+     adc_digi_pattern_table_t *adc2_pattern;  /*!<Refer to `adc1_pattern` */
+                               ^~~~~~~~~~~~
+In file included from C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from usermods/audioreactive/audio_source.h:11,
+                 from usermods/audioreactive/audio_reactive.cpp:203:
+C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:39:3: note: declared here
+ } adc_digi_pattern_table_t __attribute__((deprecated));
+   ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from usermods/audioreactive/audio_reactive.cpp:203:
+usermods/audioreactive/audio_source.h: In member function 'virtual void I2SAdcSource::initialize(int8_t, int8_t, int8_t, int8_t)':
+usermods/audioreactive/audio_source.h:625:57: warning: 'esp_err_t adc_gpio_init(adc_unit_t, adc_channel_t)' is deprecated [-Wdeprecated-declarations]
+         adc_gpio_init(ADC_UNIT_1, adc_channel_t(channel));  // ToDO: this functions was removed in esp-idf v5 - we need a replacement
+                                                         ^
+In file included from usermods/audioreactive/audio_source.h:11,
+                 from usermods/audioreactive/audio_reactive.cpp:203:
+C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:157:11: note: declared here
+ esp_err_t adc_gpio_init(adc_unit_t adc_unit, adc_channel_t channel) __attribute__((deprecated));;
+           ^~~~~~~~~~~~~
+In file included from usermods/audioreactive/audio_reactive.cpp:203:
+usermods/audioreactive/audio_source.h:625:57: warning: 'esp_err_t adc_gpio_init(adc_unit_t, adc_channel_t)' is deprecated [-Wdeprecated-declarations]
+         adc_gpio_init(ADC_UNIT_1, adc_channel_t(channel));  // ToDO: this functions was removed in esp-idf v5 - we need a replacement
+                                                         ^
+In file included from usermods/audioreactive/audio_source.h:11,
+                 from usermods/audioreactive/audio_reactive.cpp:203:
+C:/Users/DigvijayPatilLM/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:157:11: note: declared here
+ esp_err_t adc_gpio_init(adc_unit_t adc_unit, adc_channel_t channel) __attribute__((deprecated));;
+           ^~~~~~~~~~~~~
+Compiling .pio\build\home_gadgets\src\fontmanager.cpp.o
+Compiling .pio\build\home_gadgets\src\hue.cpp.o
+Compiling .pio\build\home_gadgets\src\image_loader.cpp.o
+Compiling .pio\build\home_gadgets\src\improv.cpp.o
+Compiling .pio\build\home_gadgets\src\ir.cpp.o
+Compiling .pio\build\home_gadgets\src\json.cpp.o
+Compiling .pio\build\home_gadgets\src\led.cpp.o
+Compiling .pio\build\home_gadgets\src\lx_parser.cpp.o
+Compiling .pio\build\home_gadgets\src\mbedtls_sha1_shim.cpp.o
+Compiling .pio\build\home_gadgets\src\mqtt.cpp.o
+Compiling .pio\build\home_gadgets\src\net_debug.cpp.o
+Compiling .pio\build\home_gadgets\src\network.cpp.o
+Compiling .pio\build\home_gadgets\src\ntp.cpp.o
+In file included from .pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder.h:114,
+                 from wled00/image_loader.cpp:5:
+.pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder_Impl.h: In static member function 'static void GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::GIFDraw(GIFDRAW*)':
+.pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder_Impl.h:181:9: warning: declaration of 'x' shadows a previous local [-Wshadow=compatible-local]
+     int x, iCount;
+         ^
+.pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder_Impl.h:157:7: note: shadowed declaration is here
+   int x, y, iWidth;
+       ^
+.pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder_Impl.h: In instantiation of 'static void GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::GIFDraw(GIFDRAW*) [with int maxGifWidth = 320; int maxGifHeight = 320; int lzwMaxBits = 12; bool useMalloc = true; GIFDRAW = gif_draw_tag]':
+.pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder_Impl.h:304:16:   required from 'int GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::startDecoding() [with int maxGifWidth = 320; int maxGifHeight = 320; int lzwMaxBits = 12; bool useMalloc = true]'
+wled00/image_loader.cpp:170:46:   required from here
+.pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder_Impl.h:181:9: warning: declaration of 'x' shadows a previous local [-Wshadow=compatible-local]
+     int x, iCount;
+         ^
+.pio/libdeps/home_gadgets/GifDecoder/src/GifDecoder_Impl.h:157:7: note: shadowed declaration is here
+   int x, y, iWidth;
+       ^
+Compiling .pio\build\home_gadgets\src\ota_update.cpp.o
+Compiling .pio\build\home_gadgets\src\overlay.cpp.o
+Compiling .pio\build\home_gadgets\src\palettes.cpp.o
+Compiling .pio\build\home_gadgets\src\pin_manager.cpp.o
+Compiling .pio\build\home_gadgets\src\playlist.cpp.o
+Compiling .pio\build\home_gadgets\src\presets.cpp.o
+Compiling .pio\build\home_gadgets\src\remote.cpp.o
+Compiling .pio\build\home_gadgets\src\set.cpp.o
+Compiling .pio\build\home_gadgets\src\udp.cpp.o
+Compiling .pio\build\home_gadgets\src\um_manager.cpp.o
+Compiling .pio\build\home_gadgets\src\usermod.cpp.o
+Compiling .pio\build\home_gadgets\src\util.cpp.o
+Compiling .pio\build\home_gadgets\src\wled.cpp.o
+Compiling .pio\build\home_gadgets\src\wled_main.cpp.o
+Compiling .pio\build\home_gadgets\src\wled_metadata.cpp.o
+Compiling .pio\build\home_gadgets\src\wled_serial.cpp.o
+Compiling .pio\build\home_gadgets\src\wled_server.cpp.o
+Compiling .pio\build\home_gadgets\src\ws.cpp.o
+Compiling .pio\build\home_gadgets\src\xml.cpp.o
+wled00/util.cpp:799:68: note: #pragma message: BOARD_HAS_PSRAM not defined, not using PSRAM.
+     #pragma message("BOARD_HAS_PSRAM not defined, not using PSRAM.")
+                                                                    ^
+Linking .pio\build\home_gadgets\firmware.elf
+Checking linked optional modules (usermods) in map file
+INFO: 3 libraries included as WLED optional/user modules
+INFO: 2 usermod object entries found
+INFO: Code from usermod libraries found in binary: audioreactive, wled_espnow, home_gadgets
+Retrieving maximum program size .pio\build\home_gadgets\firmware.elf
+Checking size .pio\build\home_gadgets\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [===       ]  25.7% (used 84228 bytes from 327680 bytes)
+Flash: [========  ]  84.7% (used 1332205 bytes from 1572864 bytes)
+Building .pio\build\home_gadgets\firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 4MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio\build\home_gadgets\firmware.bin
+esptool.py v4.7.4
+Creating esp32 image...
+Merged 27 ELF sections
+Successfully created esp32 image.
+bin_rename_copy([".pio\build\home_gadgets\firmware.bin"], [".pio\build\home_gadgets\firmware.elf"])
+Copying .pio\build\home_gadgets\firmware.bin to build_output\release\WLED_17.0.0-devV5_ESP32_V4.bin
+Found linker mapfile C:\Users\DigvijayPatilLM\Downloads\WLED-main\WLED-main\.pio\build\home_gadgets\firmware.map
+========================= [SUCCESS] Took 68.40 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+home_gadgets   SUCCESS   00:01:08.404
+========================= 1 succeeded in 00:01:08.404 =========================

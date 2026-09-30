@@ -1,0 +1,7 @@
+{
+  "name": "home_gadgets",
+  "build": {
+    "libArchive": false,
+    "extraScript": "gen_page.py"
+  }
+}

@@ -1,0 +1,30 @@
+home_gadgets RC4b CANDIDATE: snapshot taken by wled-main-ad right after the build (18:21:54), before any further edit
+build: firmware.bin written 18:21:36; flash 84.7% (1,332,009 B), RAM 25.7%, 0 warnings from home_gadgets; page 77,416 B / gz 27,536 B
+embedded page verified: gunzip(home_page_gz.h) == stripped src/home.htm -> true 77449
+status: AWAITING 84 review of the RC4 -> RC4b delta. RC3b stays the flash image until RC4b passes.
+delta vs RC4 (snapshot hg_team/releases/RC4): setup sets NVS 'mig' when keyInNvs && !hgKeyMigrated() (84 note 1); keyTry comment fixed in page; rel = "RC4b"
+
+md5 (full) of image, flash files and sources:
+f4afbc33ad1f2b57ad8ac65cc3c3ba5b *home_gadgets_RC4b_firmware.bin
+98e3104e4eeb92461edc0a703b0ef4b7 *bootloader.bin
+c1d5097573699bef1d67aff92fa34ec0 *partitions.bin
+e6327541e2dc394ca2c3b3280ac0f39f *boot_app0.bin
+a7d915a08facaafa745d7e8f505e43a1 *flash.ps1
+4d1118049915ecf18e50e19975cf2484 *src/gen_page.py
+54348e1071fc8ee10aa95be3d2fe4905 *src/home.htm
+31eb074a5ef486852148f2df21f1cf19 *src/home_gadgets.cpp
+fef46b2bc8084b9d61cbf5601964fd69 *src/library.json
+214b23bddd617cd71e1d95f119ca3472 *src/platformio_override.ini
+746000ab477331c3045adb4587e74c90 *src/readme.md
+
+build environment:
+c255800229753d28a705c134b1094f81 *wled00/const.h
+d52073ded9a19fe0d05af5246ff209a6 *wled00/pin_manager.h
+38ec8e056431491bf9fd2b14fce0af60 *usermods/audioreactive/audio_reactive.cpp
+6d4ee8b5cb62e4fc525b1d7bed94bfee *usermods/audioreactive/audio_source.h
+a3911fcd771bfdef2f35d440d8f1e154 *usermods/audioreactive/library.json
+7690c0fd2c9ef08e427e6283106969b0 *platformio.ini
+d9e44c06ca8226a6c6fbd5ecedc8bcf9 *package-lock.json
+  platform: Tasmota platform-espressif32 2024.06.00 (Arduino 2.0.18 / IDF 4.4.8), env home_gadgets (src/platformio_override.ini)
+
+STATUS (appended by wled-main-30 at 18:26): **84 FINAL CHECK PASS (about 18:26). RC4b = THE flash image** (replaces RC3b). 84 verified: src md5s = repo; delta vs RC4 = mig one-liner + rel + comment only; the embedded page gunzips to src/home.htm; flash files identical to RC2 (default 4 MB 1 MB-FS table); flash.ps1 read in full (md5 checks, erase opt-in, keeps NVS and LittleFS).

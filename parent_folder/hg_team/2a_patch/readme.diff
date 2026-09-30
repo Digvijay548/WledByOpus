@@ -1,0 +1,95 @@
+--- base/readme.md	2026-09-29 17:00:43.222121000 +0530
++++ merged/readme.md	2026-09-29 17:31:07.025381300 +0530
+@@ -5,8 +5,12 @@
+ - **8 relays** for home appliances (active LOW/HIGH, state after power cut, auto-off timer, "stays on" protection)
+ - **8 wall switches**: existing mains switches through AC opto-isolator modules, or low-voltage contacts
+ - **2 PIR motion sensors**, each with its own list of up to 8 actions and a "turn back off" timer
+-- **Moods**: 18 ready-made LED looks (Pub Vibes, Calm, Midnight, ...) for LED 1, LED 2 or both, plus up to 12 of your own
++- **Moods**: 23 ready-made LED looks (Pub Vibes, Calm, Midnight, ...) for LED 1, LED 2 or both, plus up to 12 of your own
+ - **Scenes**: one tap runs up to 8 actions (relays + moods)
++- **Schedules**: up to 8, at a clock time or at sunrise / sunset, on the days you pick
++- **Away mode**: lamps switch on and off at random in the evening, so the house looks lived-in
++- **Clap control** (experimental, off by default): 2 or 3 claps run a list of actions
++- **Who switched it** for every appliance, and **today's statistics** (on-time, motion per half hour)
+ - A **mobile-friendly page** at `http://<device>/home` and simple links for **Siri Shortcuts**
+ 
+ The WLED LED page (effects, colors, presets) is unchanged. Use it to fine-tune looks, then save them as moods.
+@@ -77,6 +81,53 @@
+ 
+ Settings are saved automatically on the device in `/home.json` and survive reboots and power cuts.
+ 
++### Schedules
++
++Schedules switch things at set times, even when your phone is off. You can have up to 8. Each one has:
++
++- **When**: a clock time (e.g. 23:00), or **sunrise / sunset** plus or minus up to 3 hours (e.g. "sunset, 15 min before").
++- **Days**: any days of the week.
++- **What**: up to 8 actions, the same list as scenes (relay on / off / toggle, a mood, strips on / off, all relays off).
++
++Good to know:
++
++- Schedules need the right time. The device gets it from the internet, so set your **time zone** in WLED's *Time & Macros* page. Sunrise / sunset also need your **location** there.
++- While the device doesn't know the time (no internet, just switched on), schedules wait. Missed times are **not** run later; only a short hiccup (up to 5 minutes) is caught up.
++- Each schedule runs at most **once a day**, also when the clock changes for summer / winter time. On the night summer time starts, times between 02:00 and 02:59 don't exist and are skipped.
++- Schedules never switch off appliances marked **"Stays on"**.
++- Schedules are part of the Home Gadgets settings and protected by the security key. Use them, **not** WLED's own timers or presets, to switch relays (see [Security key](#security-key)).
++
++Example, porch light: schedule 1 "every day, sunset, 0 min: Relay 3 on", schedule 2 "every day, 23:00: Relay 3 off".
++
++### Away mode
++
++Away mode makes the house look lived-in while you are out:
++
++- Pick the appliances (lamps work best) and a time window, e.g. **18:30 to 23:30**. The window may pass midnight (e.g. 22:00 to 01:00).
++- Inside the window each chosen lamp switches on or off at random, every **10 to 45 minutes** (you choose the range). The first switch comes after such a pause, not right at the start.
++- Optional: a **mood** for the LED strips when the window opens, e.g. "Away" (TV simulator) on LED 1.
++- When the window ends, the chosen lamps switch **off**, and so do the LED strips that got the mood.
++- Switching away mode **off** inside the window leaves everything as it is, so whoever came home isn't left in the dark.
++- It needs the right time (see Schedules). After a power cut away mode stays on and starts again once the time is known.
++- "Stays on" appliances are left alone.
++
++### Clap control (experimental)
++
++Clap 2 or 3 times to run a list of actions, e.g. "2 claps = ceiling light on / off, 3 claps = all off". It is **off by default** and needs the microphone (audioreactive) switched on.
++
++- Clap clearly, about half a second apart (0.15 to 0.8 s). The action runs 1 second after the last clap, then there is a 2-second pause.
++- It doesn't listen while LED 1 or LED 2 shows a 🎵 sound mood, when it was loud (music, talking) just before your first clap, or when the device is very busy (then claps are ignored rather than counted wrong).
++- The microphone hears "loud bangs", not real claps: knocking, a door slam or claps in a video can trigger it now and then. **Don't put heaters, irons or anything else that must not switch on by accident on clap actions.** A soft third clap can be missed, so make the 2-clap actions safe as well.
++- The page shows whether clap control is listening right now.
++
++### Who switched it?
++
++Each appliance shows who switched it last and how long ago: start (not switched since the device started), app / JSON API, wall switch, motion sensor, scene, Siri link, schedule, auto-off, away mode, clap, power-on after a power cut, or "all off". The time counts from the last restart.
++
++### Today's statistics
++
++For today: how long each appliance was on (including right now), and how often each motion sensor saw movement per half hour (up to 255 per block). The numbers start again at midnight and are kept only in memory, so a restart also resets them. Until the device knows the time they count "since start".
++
+ ## Siri
+ 
+ 1. iPhone: Shortcuts app → **+** → Add Action → **Get Contents of URL**.
+@@ -102,7 +153,7 @@
+ 
+ | URL | Action |
+ |---|---|
+-| `/home/api?relay=1&on=1&k=KEY` | relay 1 on (`on=0` off, `on=t` toggle) |
++| `/home/api?relay=1&on=1&k=KEY` | relay 1 on (`on=1` / `true` / `on`; `on=0` / `false` / `off` off; `on=t` / `toggle` toggle; anything else returns 400) |
+ | `/home/api?mood=0&strip=3&k=KEY` | mood 0 (Pub Vibes) on both strips (`strip=1` LED 1, `2` LED 2) |
+ | `/home/api?scene=1&k=KEY` | run scene 1 |
+ | `/home/api?strip=2&on=0&k=KEY` | LED 2 off |
+@@ -110,10 +161,12 @@
+ 
+ A wrong or missing key returns HTTP 403.
+ 
+-JSON API (`POST /json/state`, numbers start at 0). Relay, scene and all-off commands need `"k"`: `{"HomeGadgets":{"relay":0,"on":true,"k":"KEY"}}` (`"on":"t"` toggles), `{"scene":0,"k":"KEY"}`, `{"alloff":true,"k":"KEY"}`. No key needed: `{"mood":id,"strip":3}`, `{"strip":1,"on":false}`, `{"mic":true}`, `{"lvl":128}`. The state object reports `HomeGadgets.r` (relays), `sw` (wall switches) and `pir` (motion).
++JSON API (`POST /json/state`, numbers start at 0). Relay, scene, all-off and away commands need `"k"`: `{"HomeGadgets":{"relay":0,"on":true,"k":"KEY"}}` (`"on":"t"` toggles), `{"scene":0,"k":"KEY"}`, `{"alloff":true,"k":"KEY"}`, `{"away":true,"k":"KEY"}`. No key needed: `{"mood":id,"strip":3}`, `{"strip":1,"on":false}`, `{"mic":true}`, `{"lvl":128}`. The state object reports `HomeGadgets.r` (relays), `sw` (wall switches) and `pir` (motion).
+ 
+ **Never put the key into WLED presets, playlists or IR/remote files** (`presets.json`, `ir.json`): WLED serves those files to any web site, which would publish the key. For timed relays use the schedules of this usermod instead; WLED presets and timers can still start moods and switch strips, which need no key.
+ 
+-Built-in mood ids: 0 Pub Vibes, 1 Calm, 2 Midnight, 3 Disco, 4 Bass Drop, 5 Chill Lounge, 6 Cozy Fire, 7 Candlelight, 8 Ocean, 9 Northern Lights, 10 Reading, 11 Wake Up, 12 Away, 13 Romantic, 14 Rainy Day, 15 Festival Sparkle, 16 Gaming, 17 Spring Bloom. Custom moods use ids 100–111.
++Built-in mood ids: 0 Pub Vibes, 1 Calm, 2 Midnight, 3 Disco, 4 Bass Drop, 5 Chill Lounge, 6 Cozy Fire, 7 Candlelight, 8 Ocean, 9 Northern Lights, 10 Reading, 11 Wake Up, 12 Away, 13 Romantic, 14 Rainy Day, 15 Festival Sparkle, 16 Gaming, 17 Spring Bloom, 18 Beat Ripple, 19 Popcorn Party, 20 Lighthouse, 21 Night Path, 22 Focus. Custom moods use ids 100–111.
++
++Other endpoints used by the page: `GET /home/cfg` (configuration including the key), `POST /home/cfg?k=KEY` (save; also needs the settings PIN if one is set), `GET /home/live` (live status, including who switched each relay and 16 color samples per strip), `GET /home/stats` (today's statistics). `/home/live` and `/home/stats` show when someone is at home, so like `/home/cfg` they can only be read by the device's own page, not by other web sites.
+ 
+-Other endpoints used by the page: `GET /home/cfg` (configuration including the key), `POST /home/cfg?k=KEY` (save; also needs the settings PIN if one is set), `GET /home/live` (live status).
++`GET /home/cfg` does not ask for the settings PIN, so programs in your network (not web pages) can read the key. Keep untrusted devices out of this network, e.g. on a guest Wi-Fi.
