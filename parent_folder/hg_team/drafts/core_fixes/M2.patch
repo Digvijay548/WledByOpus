@@ -1,0 +1,11 @@
+--- a/wled00/wled.cpp
++++ b/wled00/wled.cpp
+@@ -274,7 +274,7 @@
+   }
+ #endif
+ 
+-  if (doReboot && (!doInitBusses || !configNeedsWrite)) // if busses have to be inited & saved, wait until next iteration
++  if (doReboot && !doInitBusses && !configNeedsWrite) // if busses have to be inited or config saved, wait until next iteration
+     reset();
+ 
+ // DEBUG serial logging (every 30s)

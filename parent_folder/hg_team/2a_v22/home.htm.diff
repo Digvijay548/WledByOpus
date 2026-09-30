@@ -1,0 +1,115 @@
+--- base/home.htm	2026-09-29 17:53:14.411639300 +0530
++++ page/home.htm	2026-09-29 18:01:02.333105300 +0530
+@@ -119,6 +119,7 @@
+ .fxl{max-height:34vh;overflow:auto;display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-radius:12px;padding:4px}
+ .fxl button{justify-content:flex-start;min-height:38px;background:transparent;border-radius:9px;padding:6px 10px;text-align:left}
+ .fxl button.sel{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
++.fxl button{position:relative;overflow:hidden}.fxb{position:absolute;left:0;bottom:0;width:100%;height:6px}
+ .sl{display:grid;grid-template-columns:minmax(0,7.5em) minmax(0,1fr) 3ch;gap:8px;align-items:center;font-size:13px}
+ .cols{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+ .cols label{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;color:var(--muted)}
+@@ -318,31 +319,66 @@
+ 	return {def:s.length>0,sl:sp(0),co:sp(1),pa:sp(2),snd:/[vf]/.test(fl),only2D:fl.includes("2")&&!fl.includes("1")};
+ }
+ 
+-// live strip preview from /home/live "px": 16 evenly spaced LED colours per strip, sampled on the device
+-// (WLED's /json/live only exists in builds without websockets); also tints the header
+-let livePv=[];
+-function livePreview(k){ const c=h("canvas",{class:"lv",height:14}); livePv.push([c,k]); return c; }
+-function drawLeds(){
++// live strip preview: ~20 fps binary frames from /home/ws while that stream runs, otherwise /home/live "px" every second
++// (16 evenly spaced LED colours per strip, sampled on the device; WLED's /json/live only exists in builds without
++// websockets); also tints the header
++let livePv=[], ws=null, wsF=null, wsT=0, wsO=0, wsTry=0, wsTmr=0, wsRaf=0, wsTint=0;
++function livePreview(k,cls){
++	const c=h("canvas",{class:cls||"lv",height:cls?6:14,"aria-hidden":"true"}); livePv.push([c,k]);
++	setTimeout(wsCheck,0); if(wsF&&!wsRaf) wsRaf=requestAnimationFrame(wsDraw); // don't wait for the next frame
++	return c;
++}
++// S[k]: colours of strip k as [r,g,b] screen values; each canvas gets a smooth gradient with one stop per sample
++function paintPv(S,tint){
+ 	livePv=livePv.filter(([c])=>c.isConnected);
+-	const px=live&&live.px; if(!Array.isArray(px)||d.hidden) return;
+-	const hexOk=v=>typeof v==="string"&&/^[0-9a-fA-F]{6}$/.test(v)?v:"000000";
+-	const avg=[];
+-	px.forEach((L,k)=>{
+-		if(!Array.isArray(L)||!L.length) return;
+-		let R=0,G=0,B=0;
+-		for(const v of L){ const n=parseInt(hexOk(v),16); R+=n>>16; G+=n>>8&255; B+=n&255; }
+-		avg[k]="rgb("+(R/L.length|0)+","+(G/L.length|0)+","+(B/L.length|0)+")";
+-	});
+ 	for(const [c,k] of livePv){
+-		const L=px[k]; if(!Array.isArray(L)||!L.length) continue;
+-		const n=L.length, w=c.clientWidth||200, x=c.getContext("2d");
++		const L=S[k], w=c.clientWidth; if(!L||!L.length||!w) continue;
++		const x=c.getContext("2d"), n=L.length-1;
+ 		if(c.width!==w) c.width=w;
+-		for(let i=0;i<n;i++){ x.fillStyle="#"+hexOk(L[i]); x.fillRect(Math.floor(i*w/n),0,Math.ceil(w/n),14); }
++		const g=x.createLinearGradient(0,0,w,0);
++		L.forEach((p,i)=>g.addColorStop(n?i/n:0,"rgb("+p+")"));
++		x.fillStyle=g; x.fillRect(0,0,w,c.height);
+ 	}
+-	const hs=$("header").style;
+-	if(avg[0]) hs.setProperty("--g1",avg[0]);
+-	if(avg[1]) hs.setProperty("--g2",avg[1]);
++	if(tint) [0,1].forEach(k=>{ const L=S[k]; if(L&&L.length) $("header").style.setProperty("--g"+(k+1),"rgb("+[0,1,2].map(j=>L.reduce((a,p)=>a+p[j],0)/L.length|0)+")"); });
++}
++function drawLeds(){
++	wsCheck();
++	const px=live&&live.px; if(!Array.isArray(px)||d.hidden||Date.now()-wsT<3000) return; // the stream draws
++	const hexOk=v=>typeof v==="string"&&/^[0-9a-fA-F]{6}$/.test(v)?v:"000000";
++	// px already has the brightness applied by the device
++	paintPv(px.map(L=>Array.isArray(L)?L.map(v=>{ const n=parseInt(hexOk(v),16); return [n>>16,n>>8&255,n&255]; }):null),1);
++}
++// /home/ws is open only while the page is visible and a preview canvas is on screen; reconnects with backoff
++function wsCheck(){
++	livePv=livePv.filter(([c])=>c.isConnected);
++	if(d.hidden||!cfg||!cfg.key||!livePv.some(([c])=>c.getClientRects().length)){
++		clearTimeout(wsTmr); wsTmr=0;
++		if(ws){ ws.onclose=null; ws.close(); ws=wsF=null; wsT=0; }
++		return;
++	}
++	if(ws||wsTmr) return;
++	wsO=Date.now();
++	ws=new WebSocket("ws://"+location.host+"/home/ws?k="+encodeURIComponent(cfg.key));
++	ws.binaryType="arraybuffer";
++	ws.onmessage=e=>{
++		// 'H', version 1, bri, n0, n1, then n0+n1 samples R,G,B (not scaled by bri); anything else is ignored
++		const b=new Uint8Array(e.data), n0=b[3], n1=b[4];
++		if(b[0]!==72||b[1]!==1||n0>48||n1>48||b.length!==5+3*(n0+n1)) return;
++		// LED gamma and linear PWM brightness on an sRGB screen: shown = c*(bri/255)^(1/2.2)
++		const f=(b[2]/255)**(1/2.2), S=[[],[]];
++		for(let i=5;i<b.length;i+=3) S[i<5+3*n0?0:1].push([b[i]*f+.5|0,b[i+1]*f+.5|0,b[i+2]*f+.5|0]);
++		wsF=S; wsT=Date.now();
++		if(!wsRaf) wsRaf=requestAnimationFrame(wsDraw);
++	};
++	ws.onclose=()=>{ // also after an error or a refused upgrade
++		ws=wsF=null; wsT=0;
++		if(Date.now()-wsO>20000) wsTry=0; // it ran for a while: start the backoff again
++		wsTmr=setTimeout(()=>{ wsTmr=0; wsCheck(); },[1,2,5,10][Math.min(wsTry++,3)]*1000);
++	};
+ }
++// at most one draw per animation frame; the header tint follows at most 4 times a second
++function wsDraw(){ wsRaf=0; if(!wsF) return; const t=Date.now(), tint=t-wsTint>250; if(tint) wsTint=t; paintPv(wsF,tint); }
++d.addEventListener("visibilitychange",wsCheck);
+ 
+ /* ---------- dialogs ---------- */
+ function modal(build){
+@@ -403,7 +439,7 @@
+ 	scrollTo(0,0);
+ }
+ function render(){
+-	liveEls=[]; livePv=[]; needRender=false;
++	liveEls=[]; needRender=false; // livePv drops removed canvases itself (an open Adjust panel keeps its previews)
+ 	({home:renderHome,moods:renderMoods,auto:renderAuto,wiring:renderWiring,settings:renderSettings})[tab]();
+ }
+ // re-render after background updates, but never while the user is typing in a field
+@@ -603,7 +639,7 @@
+ 		const search=h("input",{type:"text",placeholder:"Search effects",oninput:()=>drawList()});
+ 		const drawList=()=>{ const f=search.value.toLowerCase();
+ 			list.replaceChildren(...order.filter(([n])=>!f||n.toLowerCase().includes(f)).map(([n,i])=>h("button",{class:i===seg.fx?"sel":"",text:n+(fxMeta(i).snd?" 🎵":""),
+-				onclick:async()=>{ seg.fx=i; drawList(); await sendNow({fx:i,fxdef:true}); await reload(); }}))); };
++				onclick:async()=>{ seg.fx=i; drawList(); await sendNow({fx:i,fxdef:true}); await reload(); }},i===seg.fx?livePreview(k,"fxb"):null))); }; // the playing effect shows its live bar
+ 		drawCtl=()=>{
+ 			const m=fxMeta(seg.fx), parts=[];
+ 			// sliders: an empty label hides it, "!" keeps the default name; without metadata only speed and intensity

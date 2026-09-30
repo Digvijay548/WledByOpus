@@ -1,0 +1,315 @@
+Processing nodemcuv2 (board: nodemcuv2; platform: espressif8266@4.2.1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 66 packages, and audited 67 packages in 1s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@17.0.0-devV5 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/nodemcuv2.html
+PLATFORM: Espressif 8266 (4.2.1) > NodeMCU 1.0 (ESP-12E Module)
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 49 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ESPAsyncTCP @ 1.2.2
+|-- ESPAsyncUDP @ 0.0.0+sha.697c75a
+|-- ESP8266PWM
+|-- ArduinoUZlib @ 0.0.1+sha.20aff95
+|-- IRremoteESP8266 @ 2.9.0
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.ac44e32
+|-- AsyncMqttClient @ 0.9.0
+|-- NeoPixelBus @ 2.8.4+sha.1d7ff38
+|-- audioreactive
+|-- Wire @ 1.0
+|-- Hash @ 1.0
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.1
+|-- ESP8266mDNS @ 1.2
+|-- ESP8266WiFi @ 1.0
+|-- LittleFS @ 0.1.0
+|-- SPI @ 1.0
+|-- wled-espnow
+|-- ESP8266WebServer @ 1.0
+Building in release mode
+Compiling .pio\build\nodemcuv2\liba4f\audioreactive\audio_reactive.cpp.o
+Compiling .pio\build\nodemcuv2\lib6d0\wled_espnow\wled_espnow.cpp.o
+Compiling .pio\build\nodemcuv2\src\FX.cpp.o
+Compiling .pio\build\nodemcuv2\src\FX_2Dfcn.cpp.o
+Compiling .pio\build\nodemcuv2\src\FX_fcn.cpp.o
+Compiling .pio\build\nodemcuv2\src\FXparticleSystem.cpp.o
+Compiling .pio\build\nodemcuv2\src\alexa.cpp.o
+Compiling .pio\build\nodemcuv2\src\bus_manager.cpp.o
+Compiling .pio\build\nodemcuv2\src\button.cpp.o
+Compiling .pio\build\nodemcuv2\src\cfg.cpp.o
+Compiling .pio\build\nodemcuv2\src\colors.cpp.o
+Compiling .pio\build\nodemcuv2\src\dmx_input.cpp.o
+Compiling .pio\build\nodemcuv2\src\dmx_output.cpp.o
+Compiling .pio\build\nodemcuv2\src\e131.cpp.o
+Compiling .pio\build\nodemcuv2\src\file.cpp.o
+Compiling .pio\build\nodemcuv2\src\fontmanager.cpp.o
+wled00\colors.cpp: In function 'void rgb2hsv(const CRGBW&, CHSV32&)':
+wled00\colors.cpp:404:16: warning: comparison of integer expressions of different signedness: 'uint32_t' {aka 'unsigned int'} and 'int32_t' {aka 'int'} [-Wsign-compare]
+  404 |     if (maxval == r)       hsv.h = (uint16_t)((10923 * (g - b)) / delta);
+      |         ~~~~~~~^~~~
+wled00\colors.cpp:405:21: warning: comparison of integer expressions of different signedness: 'uint32_t' {aka 'unsigned int'} and 'int32_t' {aka 'int'} [-Wsign-compare]
+  405 |     else if (maxval == g)  hsv.h = (uint16_t)(21845 + (10923 * (b - r)) / delta);
+      |              ~~~~~~~^~~~
+wled00\FXparticleSystem.cpp: In member function 'void ParticleSystem1D::renderLargeParticle(uint32_t, uint32_t, uint8_t, const CRGBW&, bool)':
+wled00\FXparticleSystem.cpp:1569:11: warning: unused variable 'x_offset' [-Wunused-variable]
+ 1569 |   int32_t x_offset = x_subcenter & (PS_P_RADIUS_1D - 1); // same as modulo PS_P_RADIUS but faster
+      |           ^~~~~~~~
+wled00\cfg.cpp: In function 'bool deserializeConfig(ArduinoJson::JsonObject, bool)':
+wled00\cfg.cpp:229:13: warning: comparison of integer expressions of different signedness: 'int' and 'const size_t' {aka 'const unsigned int'} [-Wsign-compare]
+  229 |       if (s >= WLED_MAX_BUSSES) break; // only counts physical buses
+      |           ~~^~~~~~~~~~~~~~~~~~
+wled00\fontmanager.cpp: In member function 'void FontManager::rebuildCache(const char*)':
+wled00\fontmanager.cpp:227:44: warning: comparison of integer expressions of different signedness: 'int' and 'uint32_t' {aka 'unsigned int'} [-Wsign-compare]
+  227 |       if (file.read(widthTable, numGlyphs) != numGlyphs) { file.close(); return; } // width table starts directly after header if used
+      |           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from wled00\bus_manager.cpp:16:
+wled00\bus_manager.h: In constructor 'BusDigital::BusDigital(const BusConfig&)':
+wled00\bus_manager.h:285:14: warning: 'BusDigital::_milliAmpsPerLed' will be initialized after [-Wreorder]
+  285 |     uint8_t  _milliAmpsPerLed;
+      |              ^~~~~~~~~~~~~~~~
+wled00\bus_manager.h:284:14: warning:   'uint16_t BusDigital::_milliAmpsMax' [-Wreorder]
+  284 |     uint16_t _milliAmpsMax;
+      |              ^~~~~~~~~~~~~
+wled00\bus_manager.cpp:129:1: warning:   when initialized here [-Wreorder]
+  129 | BusDigital::BusDigital(const BusConfig &bc)
+      | ^~~~~~~~~~
+In file included from wled00\bus_manager.cpp:16:
+wled00\bus_manager.h:284:14: warning: 'BusDigital::_milliAmpsMax' will be initialized after [-Wreorder]
+  284 |     uint16_t _milliAmpsMax;
+      |              ^~~~~~~~~~~~~
+wled00\bus_manager.h:282:14: warning:   'uint8_t BusDigital::_driverType' [-Wreorder]
+  282 |     uint8_t  _driverType; // 0=RMT (default), 1=I2S
+      |              ^~~~~~~~~~~
+wled00\bus_manager.cpp:129:1: warning:   when initialized here [-Wreorder]
+  129 | BusDigital::BusDigital(const BusConfig &bc)
+      | ^~~~~~~~~~
+wled00\FX.cpp: In function 'void mode_random_chase()':
+wled00\FX.cpp:1834:11: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+ 1834 |     if (i == SEGLEN -1U && SEGENV.aux1 != (it & 0xFFFFU)) { //new first color in next frame
+      |         ~~^~~~~~~~~~~~~
+wled00\FX.cpp: In function 'void mode_ColorClouds()':
+wled00\FX.cpp:5003:21: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+ 5003 |   for (int i = 0; i < SEGLEN; i++) {
+wled00\FX.cpp: In function 'void mode_shimmer()':
+wled00\FX.cpp:5136:21: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+ 5136 |   for (int i = 0; i < SEGLEN; i++) {
+wled00\FX_fcn.cpp:1441:16: warning: 'uint8_t _stencil(uint8_t, uint8_t)' defined but not used [-Wunused-function]
+ 1441 | static uint8_t _stencil   (uint8_t a, uint8_t b) { return a ? a : b; } // function unused
+      |                ^~~~~~~~
+wled00\FX_fcn.cpp:1419:16: warning: 'uint8_t _add(uint8_t, uint8_t)' defined but not used [-Wunused-function]
+ 1419 | static uint8_t _add       (uint8_t a, uint8_t b) { unsigned t = a + b; return t > 255 ? 255 : t; } // function unused
+      |                ^~~~
+wled00\FX_fcn.cpp:1418:16: warning: 'uint8_t _bottom(uint8_t, uint8_t)' defined but not used [-Wunused-function]
+ 1418 | static uint8_t _bottom    (uint8_t a, uint8_t b) { return b; } // function unused
+      |                ^~~~~~~
+wled00\FX_fcn.cpp:1417:16: warning: 'uint8_t _top(uint8_t, uint8_t)' defined but not used [-Wunused-function]
+ 1417 | static uint8_t _top       (uint8_t a, uint8_t b) { return a; } // function unused
+      |                ^~~~
+wled00\FX.cpp: In function 'void mode_2Dgameoflife()':
+wled00\FX.cpp:5434:40: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]
+ 5434 |       cells[i].edgeCell = (x == 0 || x == cols-1 || y == 0 || y == rows-1);
+      |                                      ~~^~~~~~~~~
+wled00\FX.cpp:5434:65: warning: comparison of integer expressions of different signedness: 'unsigned int' and 'int' [-Wsign-compare]
+ 5434 |       cells[i].edgeCell = (x == 0 || x == cols-1 || y == 0 || y == rows-1);
+      |                                                               ~~^~~~~~~~~
+wled00\FX.cpp:5440:42: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'long int' [-Wsign-compare]
+ 5440 |   if (paused || (strip.now - SEGENV.step < 1000 / map(SEGMENT.speed,0,255,1,42))) {
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+wled00\FX.cpp: In function 'void mode_2Dscrollingtext()':
+wled00\FX.cpp:6479:11: warning: unused variable 'fontWidth' [-Wunused-variable]
+ 6479 |   uint8_t fontWidth = fontManager.getFontWidth(); // for fonts with variable width, this is the max letter width
+      |           ^~~~~~~~~
+Compiling .pio\build\nodemcuv2\src\hue.cpp.o
+Compiling .pio\build\nodemcuv2\src\image_loader.cpp.o
+Compiling .pio\build\nodemcuv2\src\improv.cpp.o
+Compiling .pio\build\nodemcuv2\src\ir.cpp.o
+Compiling .pio\build\nodemcuv2\src\json.cpp.o
+Compiling .pio\build\nodemcuv2\src\led.cpp.o
+Compiling .pio\build\nodemcuv2\src\lx_parser.cpp.o
+Compiling .pio\build\nodemcuv2\src\mbedtls_sha1_shim.cpp.o
+Compiling .pio\build\nodemcuv2\src\mqtt.cpp.o
+Compiling .pio\build\nodemcuv2\src\net_debug.cpp.o
+Compiling .pio\build\nodemcuv2\src\network.cpp.o
+Compiling .pio\build\nodemcuv2\src\ntp.cpp.o
+Compiling .pio\build\nodemcuv2\src\ota_update.cpp.o
+Compiling .pio\build\nodemcuv2\src\overlay.cpp.o
+Compiling .pio\build\nodemcuv2\src\palettes.cpp.o
+wled00\json.cpp: In function 'void serializePalettes(ArduinoJson::JsonObject, int)':
+wled00\json.cpp:1049:22: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+ 1049 |         } else if (i < DYNAMIC_PALETTE_COUNT + FASTLED_PALETTE_COUNT) // palette 6 - 12, fastled palettes
+      |                    ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compiling .pio\build\nodemcuv2\src\pin_manager.cpp.o
+Compiling .pio\build\nodemcuv2\src\playlist.cpp.o
+Compiling .pio\build\nodemcuv2\src\presets.cpp.o
+Compiling .pio\build\nodemcuv2\src\remote.cpp.o
+Compiling .pio\build\nodemcuv2\src\set.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\dmx\ESPDMX.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\dmx\SparkFunDMX.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\e131\ESPAsyncE131.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\espalexa\EspalexaDevice.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\fastled_slim\fastled_slim.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\network\Network.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\time\DS1307RTC.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\time\DateStrings.cpp.o
+Compiling .pio\build\nodemcuv2\src\src\dependencies\time\Time.cpp.o
+In file included from c:\users\digvijaypatillm\.platformio\packages\toolchain-xtensa\xtensa-lx106-elf\include\string.h:175,
+                 from wled00\src\dependencies\time\DateStrings.cpp:22:
+wled00\src\dependencies\time\DateStrings.cpp: In function 'char* monthStr(uint8_t)':
+wled00\src\dependencies\time\DateStrings.cpp:72:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   72 |     strcpy_P(buffer, (PGM_P)pgm_read_word(&(monthNames_P[month])));
+      |                      ^
+wled00\src\dependencies\time\DateStrings.cpp: In function 'char* dayStr(uint8_t)':
+wled00\src\dependencies\time\DateStrings.cpp:86:21: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   86 |    strcpy_P(buffer, (PGM_P)pgm_read_word(&(dayNames_P[day])));
+      |                     ^
+Compiling .pio\build\nodemcuv2\src\src\dependencies\timezone\Timezone.cpp.o
+Compiling .pio\build\nodemcuv2\src\udp.cpp.o
+Compiling .pio\build\nodemcuv2\src\um_manager.cpp.o
+Compiling .pio\build\nodemcuv2\src\usermod.cpp.o
+Compiling .pio\build\nodemcuv2\src\util.cpp.o
+Compiling .pio\build\nodemcuv2\src\wled.cpp.o
+Compiling .pio\build\nodemcuv2\src\wled_main.cpp.o
+Compiling .pio\build\nodemcuv2\src\wled_math.cpp.o
+Compiling .pio\build\nodemcuv2\src\wled_metadata.cpp.o
+Compiling .pio\build\nodemcuv2\src\wled_serial.cpp.o
+Compiling .pio\build\nodemcuv2\src\wled_server.cpp.o
+Compiling .pio\build\nodemcuv2\src\ws.cpp.o
+wled00\set.cpp: In function 'void handleSettingsSet(AsyncWebServerRequest*, byte)':
+wled00\set.cpp:341:13: warning: comparison of integer expressions of different signedness: 'int' and 'std::vector<Button>::size_type' {aka 'unsigned int'} [-Wsign-compare]
+  341 |       if (i >= buttons.size()) buttons.emplace_back(hw_btn_pin, request->arg(be).toInt()); // add button to vector
+      |           ~~^~~~~~~~~~~~~~~~~
+Compiling .pio\build\nodemcuv2\src\xml.cpp.o
+Generating LD script .pio\build\nodemcuv2\ld\local.eagle.app.v6.common.ld
+Compiling .pio\build\nodemcuv2\libec0\ESPAsyncTCP\AsyncPrinter.cpp.o
+Compiling .pio\build\nodemcuv2\libec0\ESPAsyncTCP\ESPAsyncTCP.cpp.o
+Compiling .pio\build\nodemcuv2\libec0\ESPAsyncTCP\ESPAsyncTCPbuffer.cpp.o
+wled00\wled.cpp: In member function 'void WLED::setup()':
+wled00\wled.cpp:570:25: warning: 'void ESP8266WiFiGenericClass::onEvent(WiFiEventCb, WiFiEvent_t)' is deprecated [-Wdeprecated-declarations]
+  570 |   WiFi.onEvent(WiFiEvent);
+      |                         ^
+In file included from C:\Users\DigvijayPatilLM\.platformio\packages\framework-arduinoespressif8266\libraries\ESP8266WiFi\src/ESP8266WiFiSTA.h:28,
+                 from C:\Users\DigvijayPatilLM\.platformio\packages\framework-arduinoespressif8266\libraries\ESP8266WiFi\src/ESP8266WiFi.h:34,
+                 from wled00\wled.h:91,
+                 from wled00\wled.cpp:2:
+C:\Users\DigvijayPatilLM\.platformio\packages\framework-arduinoespressif8266\libraries\ESP8266WiFi\src/ESP8266WiFiGeneric.h:71:14: note: declared here
+   71 |         void onEvent(WiFiEventCb cb, WiFiEvent_t event = WIFI_EVENT_ANY) __attribute__((deprecated));
+      |              ^~~~~~~
+wled00\wled.cpp: In member function 'void WLED::initConnection()':
+wled00\wled.cpp:793:22: warning: comparison of integer expressions of different signedness: 'int8_t' {aka 'signed char'} and 'std::vector<WiFiConfig>::size_type' {aka 'unsigned int'} [-Wsign-compare]
+  793 |     if (selectedWiFi >= multiWiFi.size()) selectedWiFi = 0; // guard: ensure valid index
+      |         ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+wled00\wled.cpp:867:23: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+  867 |     for (int i = 0; i < sizeof(multiWiFi[selectedWiFi].bssid); i++) {
+      |                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+wled00\wled.cpp: In member function 'void WLED::handleConnection()':
+wled00\wled.cpp:1031:26: warning: comparison of integer expressions of different signedness: 'int8_t' {aka 'signed char'} and 'std::vector<WiFiConfig>::size_type' {aka 'unsigned int'} [-Wsign-compare]
+ 1031 |       if (++selectedWiFi >= multiWiFi.size()) selectedWiFi = 0; // we couldn't connect, try with another network from the list
+      |           ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+Compiling .pio\build\nodemcuv2\libec0\ESPAsyncTCP\SyncClient.cpp.o
+In file included from wled00\fcn_declare.h:4,
+                 from wled00\wled.h:200,
+                 from wled00\um_manager.cpp:1:
+wled00\um_manager.cpp: In function 'size_t UsermodManager::getModCount()':
+wled00/dynarray.h:23:38: warning: array subscript 0 is outside array bounds of 'Usermod* const [0]' [-Warray-bounds]
+   23 | #define DYNARRAY_LENGTH(array_name) (&DYNARRAY_END(array_name)[0] - &DYNARRAY_BEGIN(array_name)[0])
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+wled00\um_manager.cpp:16:10: note: in expansion of macro 'DYNARRAY_LENGTH'
+   16 |   return DYNARRAY_LENGTH(usermods);
+      |          ^~~~~~~~~~~~~~~
+wled00\um_manager.cpp:13:28: note: while referencing 'usermods_end'
+   13 | DECLARE_DYNARRAY(Usermod*, usermods);
+      |                            ^~~~~~~~
+wled00/dynarray.h:22:34: note: in definition of macro 'DYNARRAY_END'
+   22 | #define DYNARRAY_END(array_name) array_name##_end
+      |                                  ^~~~~~~~~~
+wled00\um_manager.cpp:13:1: note: in expansion of macro 'DECLARE_DYNARRAY'
+   13 | DECLARE_DYNARRAY(Usermod*, usermods);
+      | ^~~~~~~~~~~~~~~~
+wled00/dynarray.h:23:69: warning: array subscript 0 is outside array bounds of 'Usermod* const [0]' [-Warray-bounds]
+   23 | #define DYNARRAY_LENGTH(array_name) (&DYNARRAY_END(array_name)[0] - &DYNARRAY_BEGIN(array_name)[0])
+      |                                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+wled00\um_manager.cpp:16:10: note: in expansion of macro 'DYNARRAY_LENGTH'
+   16 |   return DYNARRAY_LENGTH(usermods);
+      |          ^~~~~~~~~~~~~~~
+wled00\um_manager.cpp:13:28: note: while referencing 'usermods_begin'
+   13 | DECLARE_DYNARRAY(Usermod*, usermods);
+      |                            ^~~~~~~~
+wled00/dynarray.h:21:36: note: in definition of macro 'DYNARRAY_BEGIN'
+   21 | #define DYNARRAY_BEGIN(array_name) array_name##_begin
+      |                                    ^~~~~~~~~~
+wled00\um_manager.cpp:13:1: note: in expansion of macro 'DECLARE_DYNARRAY'
+   13 | DECLARE_DYNARRAY(Usermod*, usermods);
+      | ^~~~~~~~~~~~~~~~
+Compiling .pio\build\nodemcuv2\libec0\ESPAsyncTCP\tcp_axtls.c.o
+Compiling .pio\build\nodemcuv2\lib357\ESPAsyncUDP\AsyncUDP.cpp.o
+Compiling .pio\build\nodemcuv2\lib90d\ESP8266PWM\core_esp8266_waveform_phase.cpp.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\ArduinoUZlib.cpp.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\adler32.c.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\crc32.c.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\defl_static.c.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\genlz77.c.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\tinfgzip.c.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\tinflate.c.o
+Compiling .pio\build\nodemcuv2\lib800\ArduinoUZlib\tinfzlib.c.o
+.pio\libdeps\nodemcuv2\ArduinoUZlib\src\ArduinoUZlib.cpp: In static member function 'static int32_t ArduinoUZlib::decompress(uint8_t*, uint32_t, uint8_t*&, uint32_t&)':
+.pio\libdeps\nodemcuv2\ArduinoUZlib\src\ArduinoUZlib.cpp:60:28: warning: format '%lu' expects argument of type 'long unsigned int', but argument 2 has type 'int' [-Wformat=]
+   60 |     printf("decompressed %lu bytes\n", d.dest - dest);
+      |                          ~~^           ~~~~~~~~~~~~~
+      |                            |                  |
+      |                            long unsigned int  int
+      |                          %u
+.pio\libdeps\nodemcuv2\ArduinoUZlib\src\ArduinoUZlib.cpp:15:25: warning: variable 'outlen' set but not used [-Wunused-but-set-variable]
+   15 |  unsigned int len,dlen, outlen;
+      |                         ^~~~~~
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRac.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRrecv.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRsend.cpp.o
+In file included from .pio\libdeps\nodemcuv2\IRremoteESP8266\src\IRtext.h:10,
+                 from .pio\libdeps\nodemcuv2\IRremoteESP8266\src\ir_Bosch.h:22,
+                 from .pio\libdeps\nodemcuv2\IRremoteESP8266\src\IRac.h:16,
+                 from .pio\libdeps\nodemcuv2\IRremoteESP8266\src\IRac.cpp:7:
+.pio\libdeps\nodemcuv2\IRremoteESP8266\src\i18n.h:18:38: fatal error: locale/en-AU.h: No such file or directory
+   18 | #include ENQUOTE(locale/_IR_LOCALE_.h)
+      |                                      ^
+compilation terminated.
+Archiving .pio\build\nodemcuv2\lib90d\libESP8266PWM.a
+*** [.pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRac.cpp.o] Error 1
+Archiving .pio\build\nodemcuv2\lib357\libESPAsyncUDP.a
+patch_esp8266_ld([".pio\build\nodemcuv2\ld\local.eagle.app.v6.common.ld"], ["C:\Users\DigvijayPatilLM\.platformio\packages\framework-arduinoespressif8266\tools\sdk\ld\eagle.app.v6.common.ld.h"])
+========================= [FAILED] Took 34.42 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+nodemcuv2      FAILED    00:00:34.424
+==================== 1 failed, 0 succeeded in 00:00:34.424 ====================

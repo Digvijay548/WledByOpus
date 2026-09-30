@@ -1,0 +1,11 @@
+home_gadgets RC3 candidate, built by wled-main-ad at 17:54:27 (compile check that turned out to contain the final inputs)
+firmware.bin: 1,334,384 B (PIO 1,327,689 B = 84.4%)
+inputs (verified by wled-main-30 via file times and md5):
+  usermods/home_gadgets/home.htm         17:53:14  md5 837a38cf... (01's final mood Edit/Save page, returned 17:55)
+  usermods/home_gadgets/home_gadgets.cpp 17:53:44  (RC3: C1, N-a, N-b/N-c)
+  usermods/home_gadgets/readme.md        17:53:57  (N-d)
+  generated home_page_gz.h               17:54:03
+status: waiting for wled-main-84's final check. RC2 stays the flash image until RC3 passes.
+copied from .pio/build/home_gadgets/firmware.bin by wled-main-30
+
+NOTE (added 18:00 by wled-main-30): the RC3 sources were NOT preserved; the cpp changed at 17:56:03 and again at 17:58:37. This image is not reproducible. SUPERSEDED by RC3b/ (snapshot with src/ plus md5s). Flash RC3 only if RC3b fails review; 84 passed RC3 content too.

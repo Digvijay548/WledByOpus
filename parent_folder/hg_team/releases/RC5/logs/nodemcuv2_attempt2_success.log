@@ -1,0 +1,369 @@
+Processing nodemcuv2 (board: nodemcuv2; platform: espressif8266@4.2.1; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing crankyoldgit/IRremoteESP8266 @ 2.9.0
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.9.0 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 66 packages, and audited 67 packages in 2s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@17.0.0-devV5 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/nodemcuv2.html
+PLATFORM: Espressif 8266 (4.2.1) > NodeMCU 1.0 (ESP-12E Module)
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 49 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ESPAsyncTCP @ 1.2.2
+|-- ESPAsyncUDP @ 0.0.0+sha.697c75a
+|-- ESP8266PWM
+|-- ArduinoUZlib @ 0.0.1+sha.20aff95
+|-- IRremoteESP8266 @ 2.9.0
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.ac44e32
+|-- AsyncMqttClient @ 0.9.0
+|-- NeoPixelBus @ 2.8.4+sha.1d7ff38
+|-- audioreactive
+|-- Wire @ 1.0
+|-- Hash @ 1.0
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.1
+|-- ESP8266mDNS @ 1.2
+|-- ESP8266WiFi @ 1.0
+|-- LittleFS @ 0.1.0
+|-- SPI @ 1.0
+|-- wled-espnow
+|-- ESP8266WebServer @ 1.0
+Building in release mode
+Archiving .pio\build\nodemcuv2\libec0\libESPAsyncTCP.a
+Archiving .pio\build\nodemcuv2\lib800\libArduinoUZlib.a
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRac.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRtext.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRtimer.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\IRutils.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Airton.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Airwell.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Aiwa.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Amcor.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Argo.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Arris.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_BluestarHeavy.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Bosch.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Bose.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Carrier.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_ClimaButler.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Coolix.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Corona.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Daikin.cpp.o
+.pio\libdeps\nodemcuv2\IRremoteESP8266\src\IRac.cpp: In static member function 'static bool IRac::isProtocolSupported(decode_type_t)':
+.pio\libdeps\nodemcuv2\IRremoteESP8266\src\IRac.cpp:382:14: warning: statement will never be executed [-Wswitch-unreachable]
+  382 |       return true;
+      |              ^~~~
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Delonghi.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Denon.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Dish.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Doshisha.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Ecoclim.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Electra.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_EliteScreens.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Epson.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Eurom.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Fujitsu.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_GICable.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_GlobalCache.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Goodweather.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Gorenje.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Gree.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Haier.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Hitachi.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Inax.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_JVC.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Kelon.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Kelvinator.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_LG.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Lasertag.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Lego.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Lutron.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_MWM.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Magiquest.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Metz.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Midea.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_MilesTag2.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Mirage.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Mitsubishi.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_MitsubishiHeavy.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Multibrackets.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_NEC.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Neoclima.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Nikai.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Panasonic.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Pioneer.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Pronto.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_RC5_RC6.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_RCMM.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Rhoss.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Samsung.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Sanyo.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Sharp.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Sherwood.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Sony.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Symphony.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Tcl.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Technibel.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Teco.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Teknopoint.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Toshiba.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Toto.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Transcold.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Trotec.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Truma.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Vestel.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Voltas.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Whirlpool.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Whynter.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Wowwee.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Xmp.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_York.cpp.o
+Compiling .pio\build\nodemcuv2\lib9be\IRremoteESP8266\ir_Zepeal.cpp.o
+Compiling .pio\build\nodemcuv2\lib9d8\Hash\Hash.cpp.o
+Compiling .pio\build\nodemcuv2\lib7aa\LittleFS\LittleFS.cpp.o
+Compiling .pio\build\nodemcuv2\lib7aa\LittleFS\lfs.c.o
+Compiling .pio\build\nodemcuv2\lib7aa\LittleFS\lfs_util.c.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\BearSSLHelpers.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\CertStoreBearSSL.cpp.o
+In file included from C:\Users\DigvijayPatilLM\.platformio\packages\framework-arduinoespressif8266\libraries\LittleFS\src\lfs.c:10:
+c:\users\digvijaypatillm\.platformio\packages\framework-arduinoespressif8266\libraries\littlefs\lib\littlefs\lfs.c:450:13: warning: 'lfs_mlist_isopen' defined but not used [-Wunused-function]
+  450 | static bool lfs_mlist_isopen(struct lfs_mlist *head,
+      |             ^~~~~~~~~~~~~~~~
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFi.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFiAP.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFiGeneric.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFiGratuitous.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFiMulti.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFiSTA-WPS.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFiSTA.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\ESP8266WiFiScan.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\WiFiClient.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\WiFiClientSecureBearSSL.cpp.o
+Archiving .pio\build\nodemcuv2\lib9d8\libHash.a
+Archiving .pio\build\nodemcuv2\lib9be\libIRremoteESP8266.a
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\WiFiServer.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\WiFiServerSecureBearSSL.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\WiFiUdp.cpp.o
+Compiling .pio\build\nodemcuv2\lib3f4\ESP8266WiFi\enable_wifi_at_boot_time.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\AsyncEventSource.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\AsyncWebSocket.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\ContentTypes.cpp.o
+Archiving .pio\build\nodemcuv2\lib7aa\libLittleFS.a
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\DynamicBuffer.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\SPIFFSEditor.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\WebAuthentication.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\WebHandlers.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\WebRequest.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\WebResponses.cpp.o
+Compiling .pio\build\nodemcuv2\libb7e\ESPAsyncWebServerWLED\WebServer.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\ConnAckPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\Connect.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\Disconn.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\OutPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\PingReq.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\PubAck.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\Publish.cpp.o
+Archiving .pio\build\nodemcuv2\lib3f4\libESP8266WiFi.a
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\Subscribe.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\Out\Unsubscribe.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\PingRespPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\PubAckPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\PubCompPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\PubRecPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\PubRelPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\PublishPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\SubAckPacket.cpp.o
+Compiling .pio\build\nodemcuv2\libadf\AsyncMqttClient\AsyncMqttClient\Packets\UnsubAckPacket.cpp.o
+Compiling .pio\build\nodemcuv2\lib79f\SPI\SPI.cpp.o
+Compiling .pio\build\nodemcuv2\libf5e\I2S\I2S.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\animations\NeoPixelAnimator.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\HsbColor.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\HslColor.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\HtmlColor.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\HtmlColorNameStrings.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\HtmlColorNames.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\HtmlColorShortNames.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\NeoGammaDynamicTableMethod.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\NeoGammaTableMethod.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\Rgb48Color.cpp.o
+Archiving .pio\build\nodemcuv2\libb7e\libESPAsyncWebServerWLED.a
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\RgbColor.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\RgbColorBase.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\Rgbw64Color.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\RgbwColor.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\Rgbww80Color.cpp.o
+Archiving .pio\build\nodemcuv2\libadf\libAsyncMqttClient.a
+Archiving .pio\build\nodemcuv2\lib79f\libSPI.a
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\RgbwwColor.cpp.o
+Archiving .pio\build\nodemcuv2\libf5e\libI2S.a
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\RgbwwwColor.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\colors\SegmentDigit.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\Esp32_i2s.c.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\FractionClk.c.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\NeoEsp32RmtMethod.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\NeoEsp8266I2sMethodCore.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\NeoEsp8266UartMethod.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\NeoEspBitBangMethod.cpp.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\NeoPixelAvr.c.o
+Compiling .pio\build\nodemcuv2\liba6c\NeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe\internal\methods\Rp2040\NeoRp2040PioMonoProgram.cpp.o
+Compiling .pio\build\nodemcuv2\libe8c\arduinoFFT\arduinoFFT.cpp.o
+Compiling .pio\build\nodemcuv2\libab6\Wire\Wire.cpp.o
+Compiling .pio\build\nodemcuv2\libc1e\ESP8266mDNS\ESP8266mDNS.cpp.o
+Compiling .pio\build\nodemcuv2\libc1e\ESP8266mDNS\LEAmDNS.cpp.o
+Compiling .pio\build\nodemcuv2\libc1e\ESP8266mDNS\LEAmDNS_Control.cpp.o
+Compiling .pio\build\nodemcuv2\libc1e\ESP8266mDNS\LEAmDNS_Helpers.cpp.o
+Compiling .pio\build\nodemcuv2\libc1e\ESP8266mDNS\LEAmDNS_Structs.cpp.o
+Compiling .pio\build\nodemcuv2\libc1e\ESP8266mDNS\LEAmDNS_Transfer.cpp.o
+Compiling .pio\build\nodemcuv2\lib488\ArduinoOTA\ArduinoOTA.cpp.o
+Compiling .pio\build\nodemcuv2\libd2a\DNSServer\DNSServer.cpp.o
+Compiling .pio\build\nodemcuv2\lib3ab\ESP8266WebServer\detail\mimetable.cpp.o
+Archiving .pio\build\nodemcuv2\libFrameworkArduinoVariant.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Crypto.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Esp-frag.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Esp-version.cpp.o
+Archiving .pio\build\nodemcuv2\libab6\libWire.a
+Archiving .pio\build\nodemcuv2\liba6c\libNeoPixelBus@src-0e2fbc358b58ed4d4ea24eac3c8c53fe.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Esp.cpp.o
+Archiving .pio\build\nodemcuv2\lib3ab\libESP8266WebServer.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\FS.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\FSnoop.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\FunctionalInterrupt.cpp.o
+Archiving .pio\build\nodemcuv2\libe8c\libarduinoFFT.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\HardwareSerial.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\IPAddress.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipDhcpServer-NonOS.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipDhcpServer.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipIntf.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipIntfCB.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\MD5Builder.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Print.cpp.o
+Archiving .pio\build\nodemcuv2\libd2a\libDNSServer.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Schedule.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\StackThunk.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Stream.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\StreamSend.cpp.o
+Archiving .pio\build\nodemcuv2\lib488\libArduinoOTA.a
+Archiving .pio\build\nodemcuv2\libc1e\libESP8266mDNS.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Tone.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\TypeConversion.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Updater.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\WMath.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\WString.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\abi.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\aes_unwrap.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\base64.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\cbuf.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\cont.S.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\cont_util.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_app_entry_noextra4k.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_eboot_command.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_features.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_flash_quirks.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_flash_utils.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_i2s.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_main.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_non32xfer.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_noniso.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_phy.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_postmortem.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_si2c.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_sigma_delta.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_spi_utils.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_timer.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_vm.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_waveform_phase.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_waveform_pwm.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_analog.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_digital.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_pulse.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_pwm.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_shift.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\crc32.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\debug.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\exc-c-wrapper-handler.S.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\exc-sethandler.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\flash_hal.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\gdb_hooks.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\heap.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\hwdt_app_entry.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\libb64\cdecode.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\libb64\cencode.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\libc_replacements.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\mmu_iram.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\reboot_uart_dwnld.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_cache.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_check.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_gc.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_hydrogen.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_nucleus.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs_api.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\sqrt32.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\stdlib_noniso.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\time.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\uart.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_info.c.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_integrity.c.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_local.c.o
+C:\Users\DigvijayPatilLM\.platformio\packages\framework-arduinoespressif8266\cores\esp8266\mmu_iram.cpp:29:34: note: '#pragma message: ICACHE size 16K'
+   29 | #pragma message("ICACHE size 16K")
+      |                                  ^
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_malloc.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_poison.c.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\wpa2_eap_patch.cpp.o
+Archiving .pio\build\nodemcuv2\libFrameworkArduino.a
+Linking .pio\build\nodemcuv2\firmware.elf
+Checking linked optional modules (usermods) in map file
+INFO: 2 libraries included as WLED optional/user modules
+INFO: 1 usermod object entries found
+INFO: Code from usermod libraries found in binary: audioreactive, wled_espnow
+Retrieving maximum program size .pio\build\nodemcuv2\firmware.elf
+Checking size .pio\build\nodemcuv2\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [======    ]  57.2% (used 46868 bytes from 81920 bytes)
+Flash: [========= ]  89.1% (used 930707 bytes from 1044464 bytes)
+Building .pio\build\nodemcuv2\firmware.bin
+Creating BIN file ".pio\build\nodemcuv2\firmware.bin" using "C:\Users\DigvijayPatilLM\.platformio\packages\framework-arduinoespressif8266\bootloaders\eboot\eboot.elf" and ".pio\build\nodemcuv2\firmware.elf"
+bin_rename_copy([".pio\build\nodemcuv2\firmware.bin"], [".pio\build\nodemcuv2\firmware.elf"])
+Copying .pio\build\nodemcuv2\firmware.bin to build_output\release\WLED_17.0.0-devV5_ESP8266.bin
+Creating gzip file build_output\release\WLED_17.0.0-devV5_ESP8266.bin.gz from build_output\release\WLED_17.0.0-devV5_ESP8266.bin
+Found linker mapfile C:\Users\DigvijayPatilLM\Downloads\WLED-main\WLED-main\.pio\build\nodemcuv2\firmware.map
+========================= [SUCCESS] Took 51.11 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+nodemcuv2      SUCCESS   00:00:51.113
+========================= 1 succeeded in 00:00:51.113 =========================

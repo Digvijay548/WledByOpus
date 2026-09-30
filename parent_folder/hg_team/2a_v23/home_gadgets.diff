@@ -1,0 +1,35 @@
+--- base.cpp	2026-09-29 18:23:15.950410800 +0530
++++ home_gadgets.cpp	2026-09-29 18:27:27.775847500 +0530
+@@ -1931,6 +1931,24 @@
+   request->send(403, FPSTR(CONTENT_TYPE_JSON), F("{\"ok\":false,\"err\":\"key\"}"));
+ }
+ 
++// GET /home/bm: the look of each built-in mood (index = mood id), for the page's animated mood previews.
++// Streamed from the table, so the shared JSON buffer is not used (GET /home/cfg "bm" keeps names and gradients only).
++// pal "" = the effect's default palette. Static data without anything personal, so no key is needed.
++static void hgServeBuiltinLooks(AsyncWebServerRequest *request) {
++  AsyncResponseStream *res = request->beginResponseStream(FPSTR(CONTENT_TYPE_JSON));
++  res->addHeader(F("Cache-Control"), F("no-cache"));
++  res->print('[');
++  for (unsigned i = 0; i < HG_BUILTIN_COUNT; i++) {
++    const HgBuiltinMood &b = HG_BUILTIN_MOODS[i];
++    res->print(i ? F(",{\"pal\":\"") : F("{\"pal\":\""));
++    hgPrintJsonText(*res, b.pal);
++    res->printf("\",\"sx\":%u,\"ix\":%u,\"bri\":%u,\"col\":[%lu,%lu,%lu]}", b.sx, b.ix, b.bri,
++                (unsigned long)b.col[0], (unsigned long)b.col[1], (unsigned long)b.col[2]);
++  }
++  res->print(']');
++  request->send(res);
++}
++
+ #ifndef WLED_DISABLE_WEBSOCKETS
+ // runs in the web task. A preview client needs the API key (/home/ws?k=KEY): browsers let any web site open a
+ // websocket to any host, and the LED colors show when someone is at home. At most HG_WS_CLIENTS are accepted.
+@@ -2029,6 +2047,7 @@
+   // "/home" also matches "/home/..." in AsyncWebServer, so the specific routes are registered first
+   server.on(F("/home/live"), HTTP_GET, [this](AsyncWebServerRequest *request) { serveLive(request); });
+   server.on(F("/home/stats"), HTTP_GET, [this](AsyncWebServerRequest *request) { serveStats(request); });
++  server.on(F("/home/bm"), HTTP_GET, hgServeBuiltinLooks);
+   server.on(F("/home/api"),  HTTP_GET, [this](AsyncWebServerRequest *request) { serveApi(request); });
+   server.on(F("/home/cfg"),  HTTP_GET, [this](AsyncWebServerRequest *request) { serveConfig(request); });
+   server.on(F("/home/cfg"),  HTTP_POST,

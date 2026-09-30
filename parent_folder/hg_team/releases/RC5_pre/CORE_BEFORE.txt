@@ -1,0 +1,18 @@
+Core files BEFORE the RC5 core fixes (recorded by wled-main-30 at 18:29:49; the RC4b usermod state)
+870532df5b3441795b0d68cec1175f93 *wled00/FX_fcn.cpp
+8f132c11c9fd519e4b4070853b092995 *wled00/bus_manager.h
+601c0a9cf78e73decfa580050cf83914 *wled00/bus_manager.cpp
+66a360def427de46ef9aea608d146dd8 *wled00/FX.cpp
+5e0066012cdb96b972d458d1774e83c6 *wled00/file.cpp
+78020fcf2916852d41c598578ec660d3 *wled00/wled.cpp
+0426a0ec741e85f5aa020ae5f550b26e *wled00/wled_metadata.cpp
+c255800229753d28a705c134b1094f81 *wled00/const.h
+d52073ded9a19fe0d05af5246ff209a6 *wled00/pin_manager.h
+  15:13:57 wled00/FX_fcn.cpp
+  15:13:57 wled00/bus_manager.h
+  15:13:57 wled00/bus_manager.cpp
+  15:13:57 wled00/FX.cpp
+  15:13:57 wled00/file.cpp
+  15:13:58 wled00/wled.cpp
+  15:13:58 wled00/wled_metadata.cpp
+0917adb80b134b56ba0efc210a4d4201 *WLED-main/wled00/colors.cpp

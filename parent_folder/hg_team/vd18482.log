@@ -1,0 +1,9 @@
+[home] Home Gadgets RC4b (cpp md5 31eb074a), 23 built-in moods, page C:\Users\DigvijayPatilLM\Downloads\WLED-main\hg_team\virtualdev\www\home.htm
+[home] API key for this run: 37sqstxa2d
+[server] home_api.js loaded
+[server] core_api.js loaded
+Virtual WLED device (home_gadgets): 220 effect slots (216 real), 72 palettes, 120 LEDs
+  fxsim: C:\Users\DigvijayPatilLM\Downloads\WLED-main\hg_team\fxsim\dist\fxsim.js - 146/216 effects run, 70 fall back
+  WLED UI:      http://127.0.0.1:18482/
+  Home Gadgets: http://127.0.0.1:18482/home
+  (local only; use --host 0.0.0.0 to reach it from a phone on the same network)

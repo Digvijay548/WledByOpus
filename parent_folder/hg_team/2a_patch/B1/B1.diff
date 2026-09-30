@@ -1,0 +1,79 @@
+--- b1/base.cpp	2026-09-29 17:41:41.802764300 +0530
++++ b1/fix.cpp	2026-09-29 17:42:46.972061500 +0530
+@@ -426,6 +426,7 @@
+     HgScene  scenes[HG_SCENES];
+     HgMood   moods[HG_CUSTOM_MOODS];
+     HgSchedule schedules[HG_SCHEDULES];
++    uint8_t  schCount = 0;              // schedules in use: the list is compact, slots 0 .. schCount-1
+     HgAway   away;
+ 
+     // runtime state of schedules and away mode
+@@ -845,18 +846,31 @@
+     }
+   }
+ 
+-  // schedules and away mode live only here, so changing them needs the API key (never WLED presets / timers)
++  // schedules and away mode live only here, so changing them needs the API key (never WLED presets / timers).
++  // "sch" is always the complete list (the page adds and deletes entries): each entry is a full description
++  // (missing fields get the defaults) and the slots after the list's end become unused.
+   arr = root[F("sch")];
+   if (!arr.isNull()) {
+-    for (unsigned i = 0; i < HG_SCHEDULES && i < arr.size(); i++) {
+-      JsonObject o = arr[i];
+-      if (o.isNull()) continue;
++    // which timings already ran today, so a schedule that moved to another slot (an entry before it was deleted)
++    // keeps its "ran today" mark and a clock jump back cannot run it twice
++    struct HgFired { uint8_t type, days; int16_t atMin; uint16_t firedDay; };
++    HgFired prev[HG_SCHEDULES];
++    const unsigned prevCount = schCount;
++    for (unsigned i = 0; i < prevCount; i++) {
++      const HgSchedule &s = schedules[i];
++      prev[i] = {s.type, s.days, s.atMin, s.firedDay};
++    }
++    const unsigned n = arr.size();
++    schCount = n < HG_SCHEDULES ? n : HG_SCHEDULES;
++    for (unsigned i = 0; i < HG_SCHEDULES; i++) {
+       HgSchedule &s = schedules[i];
+-      const uint8_t oldType = s.type;
+-      const int16_t oldAt = s.atMin;
++      s = HgSchedule();
++      if (i >= schCount) continue;  // unused slot
++      JsonObject o = arr[i];
++      if (o.isNull()) continue;     // invalid entry: stays a disabled default schedule
+       char fallback[HG_NAME_LEN];
+       snprintf_P(fallback, sizeof(fallback), PSTR("Schedule %u"), i + 1);
+-      if (!o["n"].isNull()) hgCopyName(s.name, o["n"].as<const char*>(), fallback);
++      hgCopyName(s.name, o["n"] | "", fallback);
+       s.en   = o["en"] | s.en;
+       s.days = (o["d"] | (int)s.days) & 0x7F;
+       s.type = constrain(o["t"] | (int)s.type, (int)SCH_CLOCK, (int)SCH_SUNSET);
+@@ -865,7 +879,10 @@
+       s.atMin = constrain(o["m"] | (int)s.atMin, lo, hi);
+       JsonArray a = o["a"];
+       if (!a.isNull()) parseActions(a, s.actions);
+-      if (s.type != oldType || s.atMin != oldAt) s.firedDay = 0;  // moved to another time: may run again today
++      for (unsigned k = 0; k < prevCount; k++) {
++        const HgFired &p = prev[k];
++        if (p.type == s.type && p.atMin == s.atMin && p.days == s.days && p.firedDay > s.firedDay) s.firedDay = p.firedDay;
++      }
+     }
+   }
+ 
+@@ -967,7 +984,7 @@
+   }
+ 
+   arr = root.createNestedArray(F("sch"));
+-  for (unsigned i = 0; i < HG_SCHEDULES; i++) {
++  for (unsigned i = 0; i < schCount; i++) {  // only the schedules in use: the page treats "sch" as a list
+     const HgSchedule &s = schedules[i];
+     JsonObject o = arr.createNestedObject();
+     if (s.name[0]) {
+@@ -1542,7 +1559,7 @@
+   // local times of today's sunrise / sunset, 0 when no location is set (see hgIsDayTime())
+   const int riseMin = sunrise ? hour(sunrise) * 60 + minute(sunrise) : -1;
+   const int setMin  = sunset  ? hour(sunset)  * 60 + minute(sunset)  : -1;
+-  for (unsigned i = 0; i < HG_SCHEDULES; i++) {
++  for (unsigned i = 0; i < schCount; i++) {
+     HgSchedule &s = schedules[i];
+     if (!s.en || !(s.days & dayBit) || s.firedDay == today) continue;
+     int due = s.atMin;
